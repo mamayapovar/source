@@ -1,0 +1,10 @@
+.bookmark {
+  display: grid;
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+  }
+}

@@ -20,6 +20,7 @@
 }
 
 .section-link {
+  display: inline-flex;
   font-weight: 400;
   font-size: var(--font-s);
   line-height: var(--lh-s);
@@ -27,16 +28,18 @@
   cursor: pointer;
 
   &:hover,
-  &:focus-visible {
+  &.focus-visible {
+    outline: none;
     text-decoration: underline;
   }
 
-  &:disabled {
+  &.disabled {
     color: var(--color-text-disabled);
     cursor: not-allowed;
+    pointer-events: none;
 
     &:hover,
-    &:focus-visible {
+    &.focus-visible {
       text-decoration: none;
     }
   }

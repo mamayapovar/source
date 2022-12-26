@@ -5,7 +5,7 @@
 
   &__left {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: auto auto;
     gap: 24px;
   }
 
@@ -20,20 +20,43 @@
       line-height: var(--lh-primary);
       color: var(--color-text-secondary);
       transition: color 0.2s ease;
+      pointer-events: none;
     }
 
-    .content-footer__icon {
+    .icon {
       fill: var(--color-icons-secondary);
     }
 
     &:hover,
-    &:focus-visible {
+    &.focus-visible {
       span {
         color: var(--color-text-accent);
       }
 
-      .content-footer__icon {
+      .icon {
         fill: var(--color-icons-primary);
+      }
+    }
+
+    &.active {
+      span {
+        color: var(--color-text-accent);
+      }
+
+      .icon {
+        fill: var(--color-icons-primary);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      span {
+        display: none;
+      }
+
+      .icon {
+        fill: var(--color-text-disabled);
       }
     }
   }

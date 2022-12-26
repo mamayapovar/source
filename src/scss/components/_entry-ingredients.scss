@@ -1,0 +1,23 @@
+.entry-ingredients {
+  &__title {
+    margin-bottom: 24px;
+  }
+}
+
+.entry-ingredients-cost {
+  display: grid;
+  align-items: center;
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 48px 0;
+  text-align: center;
+  background-color: var(--color-bg-global);
+  gap: 4px;
+
+  &__label {
+    font-weight: 400;
+    font-size: var(--font-s);
+    line-height: var(--lh-primary);
+    color: var(--color-text-primary);
+  }
+}

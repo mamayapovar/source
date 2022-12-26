@@ -1,0 +1,72 @@
+.step {
+  &__list {
+    counter-reset: step;
+    display: grid;
+    gap: 32px;
+  }
+
+  &__btn {
+    margin-top: 12px;
+  }
+}
+
+.step-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__number {
+    &::after {
+      counter-increment: step;
+      content: "Шаг "counter(step);
+      width: 24px;
+      height: 24px;
+      font-size: var(--font-s);
+      line-height: var(--lh-primary);
+      color: var(--color-text-primary);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__delete {
+    justify-self: end;
+    transition: opacity 0.2s ease;
+
+    .icon {
+      fill: var(--color-icons-secondary);
+    }
+
+    &:hover,
+    &.focus-visible {
+      outline: none;
+
+      .icon {
+        fill: var(--color-text-error);
+      }
+    }
+
+    &.disabled {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-column: 1 / 3;
+    grid-template-columns: 200px 1fr;
+    gap: 8px;
+  }
+
+  &__imageuploader {
+    height: 200px;
+  }
+
+  &__input {
+    height: 100%;
+  }
+}

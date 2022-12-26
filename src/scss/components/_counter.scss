@@ -1,0 +1,55 @@
+.counter {
+  display: flex;
+
+  &__input {
+    border: none;
+    border-radius: 0;
+    padding: 8px;
+    width: 56px;
+    text-align: center;
+  }
+
+  &__btn {
+    border: none;
+    padding: 16px;
+    background-color: var(--color-button-secondary-bg-default);
+    transition: background-color 0.2s ease;
+
+    .icon {
+      fill: var(--color-icons-primary);
+      transition: fill, opacity 0.2s ease;
+    }
+
+    &:hover,
+    &.focus-visible {
+      background-color: var(--color-button-secondary-bg-hover);
+    }
+
+    &:active {
+      background-color: var(--color-button-secondary-bg-hover);
+
+      .icon {
+        opacity: 0.6;
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      border-color: var(--color-button-secondary-bg-disabled);
+      color: var(--color-button-secondary-text-disabled);
+      background-color: var(--color-button-secondary-bg-disabled);
+
+      .icon {
+        fill: var(--color-button-secondary-text-disabled);
+      }
+    }
+
+    &--minus {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &--plus {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}

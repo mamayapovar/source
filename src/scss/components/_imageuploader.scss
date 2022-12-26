@@ -1,0 +1,45 @@
+.imageuploader {
+  position: relative;
+  display: grid;
+  grid-template-rows: 300px auto;
+  width: 100%;
+  gap: 8px;
+
+  &__input {
+    @include bg-cover;
+  }
+
+  &__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    pointer-events: none;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    z-index: 2;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &--small {
+    grid-template-rows: 1fr;
+    gap: 0;
+
+    .imageuploader__btn {
+      right: 8px;
+      top: 8px;
+    }
+  }
+}

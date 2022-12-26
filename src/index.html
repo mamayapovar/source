@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="page page--feed">
+<html lang="ru" class="page">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,26 +16,75 @@
   </head>
 
   <body class="page__body">
-    <!-- Шапка для участника -->
-    @include('partials/header-auth.html')
-
-    <!-- Шапка для гостя -->
     @include('partials/header.html')
 
     <div class="container">
       <div class="site-container">
-        <!-- Сайдбар -->
-        @include('partials/sidebar.html')
+        <nav class="sidebar">
+					<div class="sidebar__inner">
+						<div class="sidebar-tree">
+							<ul class="list-reset sidebar-tree__list" id="sidebar-tabs">
+								<li class="sidebar-tree__item  active">
+									<a href="index.html" class="sidebar-tree__link">
+										<svg class="icon" aria-hidden="true" focusable="false">
+											<use href="img/sprite.svg#clock"/>
+										</svg>
+										<span>Свежее</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<button class="btn-reset  sidebar-tree__link" data-graph-path="register" data-graph-speed="100">
+										<svg class="icon" aria-hidden="true" focusable="false">
+											<use href="img/sprite.svg#bookmark"/>
+										</svg>
+										<span>Закладки</span>
+									</button>
+								</li>
+							</ul>
+							<ul class="list-reset sidebar-tree__list" id="sidebar-links">
+								<li class="sidebar-tree__item">
+									<a href="category.html" class="sidebar-tree__link">
+										<img src="img/category/bake-icon.svg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Выпечка</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<a href="category.html" class="sidebar-tree__link">
+										<img src="img/category/soup-icon.svg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Супы</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<a href="category.html" class="sidebar-tree__link">
+										<img src="img/category/salad-icon.svg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Салаты</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<a href="category.html" class="sidebar-tree__link">
+										<img src="img/category/hot-icon.svg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Горячие блюда</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="sidebar-footer">
+							<a href="https://sonniy.notion.site/72491004fa1044d8b0dccf9cdeb44053" target="_blank" class="sidebar-footer__link">О проекте</a>
+						</div>
+					</div>
+				</nav>
 
-        <main class="feed">
+        <main class="index">
           <h1 class="visually-hidden">Свежие рецепты</h1>
-          @include('partials/feed-item.html')
-          @include('partials/feed-item.html')
-          @include('partials/feed-item.html')
+					<div class="feed">
+						@include('partials/feed-item.html')
+						@include('partials/feed-item.html')
+						@include('partials/feed-item.html')
+					</div>
         </main>
       </div>
     </div>
     @include('partials/modals.html')
+		@include('partials/svg-scripts.html')
   </body>
-
 </html>

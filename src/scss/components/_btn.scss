@@ -12,15 +12,15 @@
   text-align: center;
   color: var(--color-button-primary-text);
   background-color: var(--color-button-primary-bg-default);
-  transition: color, border-color, background-color 0.2s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
 
-  &__icon {
+  .icon {
     fill: var(--color-button-primary-text);
   }
 
   &:hover,
-  &:focus-visible {
+  &.focus-visible {
     background-color: var(--color-button-primary-bg-hover);
   }
 
@@ -28,27 +28,33 @@
     background-color: var(--color-button-primary-bg-click);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     color: var(--color-button-primary-text-disabled);
     background-color: var(--color-button-primary-bg-disabled);
     cursor: not-allowed;
+    pointer-events: none;
 
-    .btn__icon {
+    .icon {
       fill: var(--color-button-primary-text-disabled);
     }
+  }
+
+  &--small {
+    padding: 12px 24px;
   }
 
   &--second {
     border: 1px solid var(--color-button-secondary-border);
     color: var(--color-button-secondary-text);
-    background-color: var(--color-button-secondary-bg-default);
+    background-color: transparent;
 
-    .btn__icon {
+    .icon {
       fill: var(--color-button-secondary-text);
     }
 
     &:hover,
-    &:focus-visible {
+    &.focus-visible {
       background-color: var(--color-button-secondary-bg-hover);
     }
 
@@ -57,12 +63,13 @@
       background-color: var(--color-button-secondary-bg-hover);
     }
 
-    &:disabled {
+    &:disabled,
+    &.disabled {
       border-color: var(--color-button-secondary-bg-disabled);
       color: var(--color-button-secondary-text-disabled);
       background-color: var(--color-button-secondary-bg-disabled);
 
-      .btn__icon {
+      .icon {
         fill: var(--color-button-secondary-text-disabled);
       }
     }
@@ -73,16 +80,16 @@
     color: var(--color-button-tertiary-text-default);
     background-color: transparent;
 
-    .btn__icon {
+    .icon {
       fill: var(--color-button-tertiary-text-default);
     }
 
     &:hover,
-    &:focus-visible {
+    &.focus-visible {
       color: var(--color-button-tertiary-text-hover);
       background-color: transparent;
 
-      .btn__icon {
+      .icon {
         fill: var(--color-button-tertiary-text-hover);
       }
     }
@@ -91,16 +98,17 @@
       color: var(--color-button-tertiary-text-click);
       background-color: transparent;
 
-      .btn__icon {
+      .icon {
         fill: var(--color-button-tertiary-text-click);
       }
     }
 
-    &:disabled {
+    &:disabled,
+    &.disabled {
       color: var(--color-button-tertiary-text-disabled);
       background-color: transparent;
 
-      .btn__icon {
+      .icon {
         fill: var(--color-button-tertiary-text-disabled);
       }
     }
@@ -111,14 +119,13 @@
     width: 40px;
     height: 40px;
     background-color: var(--color-button-other-bg);
-    transition: opacity 0.2s ease;
 
-    .btn__icon {
+    .icon {
       fill: var(--color-icons-primary-inverse);
     }
 
     &:hover,
-    &:focus-visible {
+    &.focus-visible {
       background-color: var(--color-button-other-bg);
       opacity: 0.8;
     }
@@ -129,10 +136,14 @@
     }
   }
 
+  &--icon {
+    padding: 12px;
+  }
+
   &--right {
     padding-right: 24px;
 
-    .btn__icon {
+    .icon {
       margin-left: 8px;
     }
   }
@@ -140,9 +151,93 @@
   &--left {
     padding-left: 24px;
 
-    .btn__icon {
+    .icon {
       order: -1;
       margin-right: 8px;
+    }
+  }
+
+  &--important {
+    &.btn--second {
+      border: 1px solid var(--color-button-important-secondary-border);
+      color: var(--color-button-important-secondary-text);
+
+      .icon {
+        fill: var(--color-button-important-secondary-text);
+      }
+
+      &:hover,
+      &.focus-visible {
+        background-color: var(--color-button-important-secondary-bg-hover);
+      }
+
+      &:active {
+        border-color: var(--color-button-important-secondary-bg-hover);
+        background-color: var(--color-button-important-secondary-bg-hover);
+      }
+
+      &:disabled,
+      &.disabled {
+        border-color: var(--color-button-important-secondary-bg-disabled);
+        color: var(--color-button-important-secondary-text-disabled);
+        background-color: var(--color-button-important-secondary-bg-disabled);
+
+        .icon {
+          fill: var(--color-button-important-secondary-text-disabled);
+        }
+      }
+    }
+
+    &.btn--third {
+      color: var(--color-button-important-tertiary-text-default);
+
+      .icon {
+        fill: var(--color-button-important-tertiary-text-default);
+      }
+
+      &:hover,
+      &.focus-visible {
+        color: var(--color-button-important-tertiary-text-hover);
+
+        .icon {
+          fill: var(--color-button-important-tertiary-text-hover);
+        }
+      }
+
+      &:active {
+        color: var(--color-button-important-tertiary-text-click);
+
+        .icon {
+          fill: var(--color-button-important-tertiary-text-click);
+        }
+      }
+
+      &:disabled,
+      &.disabled {
+        color: var(--color-button-important-tertiary-text-disabled);
+
+        .icon {
+          fill: var(--color-button-important-tertiary-text-disabled);
+        }
+      }
+    }
+  }
+
+  &--subscribe {
+    &.active {
+      border-color: var(--color-button-primary-bg-click);
+      color: var(--color-button-primary-text);
+      background-color: var(--color-button-primary-bg-click);
+
+      .icon {
+        display: none;
+      }
+
+      &:hover,
+      &.focus-visible {
+        border-color: var(--color-button-primary-bg-hover);
+        background-color: var(--color-button-primary-bg-hover);
+      }
     }
   }
 }
