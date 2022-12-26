@@ -1,9 +1,9 @@
 {
-  "name": "gulp-builder",
-  "version": "2.1.0",
-  "description": "gulp-builder for weblayout",
+  "name": "myap",
+  "version": "0.2",
+  "description": "Мама, я повар! — это платформа для обмена рецептами",
   "main": "gulpfile.js",
-  "homepage": "https://github.com/syab2/mamayapovar",
+  "homepage": "https://github.com/mamayapovar/source",
   "scripts": {
     "html": "node-w3c-validator -f lint -evH -i app/**/*.html",
     "dev": "gulp",
