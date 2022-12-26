@@ -1,6 +1,6 @@
 {
   "name": "myap",
-  "version": "0.2",
+  "version": "0.2.0",
   "description": "Мама, я повар! — это платформа для обмена рецептами",
   "main": "gulpfile.js",
   "homepage": "https://github.com/mamayapovar/source",
@@ -13,7 +13,7 @@
     "zip": "gulp zip",
     "code": "editorconfig-checker",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d app"
+    "deploy": "gh-pages -d app -r https://github.com/mamayapovar/mamayapovar.github.io.git"
   },
   "author": "sonniydsgn",
   "license": "ISC",
