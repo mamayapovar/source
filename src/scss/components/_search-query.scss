@@ -1,0 +1,124 @@
+.search-query {
+  position: relative;
+
+  &__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn {
+    position: absolute;
+    right: 20px;
+    display: none;
+    transition: opacity 0.2s ease;
+
+    .icon {
+      fill: var(--color-fields-text-primary);
+    }
+
+    &:hover,
+    &.focus-visible {
+      opacity: 0.6;
+    }
+
+    &.active {
+      display: flex;
+    }
+  }
+}
+
+.search-query-menu {
+  position: absolute;
+  left: 0;
+  top: 64px;
+  display: grid;
+  align-items: start;
+  border: 1px solid  var(--color-bg-global);
+  border-radius: 8px;
+  padding: 24px 12px;
+  width: 100%;
+  box-shadow: var(--elevation-1);
+  background: var(--color-bg-island);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.15s ease, transform 0.2s ease;
+  pointer-events: none;
+  gap: 4px;
+
+  &__list {
+    display: grid;
+    align-items: start;
+    gap: 4px;
+  }
+
+  &__label {
+    margin-bottom: 4px;
+    margin-left: 12px;
+    font-weight: 400;
+    font-size: var(--font-xs);
+    line-height: var(--lh-xs);
+    color: var(--color-text-secondary);
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__item {
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+
+    .icon {
+      fill: var(--color-icons-secondary);
+    }
+
+    &.focused {
+      background-color: var(--color-bg-island-hover-inverse);
+    }
+
+    &--queries {
+      display: none;
+
+      &.active {
+        display: flex;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    color: var(--color-text-primary);
+    transition: background-color 0.2s ease;
+
+    span {
+      overflow: hidden;
+      margin-left: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &:hover {
+      outline: none;
+      background-color: var(--color-bg-island-hover-inverse);
+    }
+  }
+
+  &__avatar {
+    @include bg-cover;
+
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: inherit;
+  }
+}

@@ -10,3 +10,4 @@ import './components/_counter.js'
 import './components/_input-validate.js';
 import './components/_textarea-resize.js';
 import './components/_info-avatar.js';
+import './components/_search-query.js';
