@@ -1,5 +1,3 @@
-import vars from "../_vars";
-
 (function(){
   if (document.querySelector('[data-search-query]')) {
 		const searchQuery = document.querySelector('[data-search-query]');
@@ -7,33 +5,17 @@ import vars from "../_vars";
 		const searchList = document.querySelector('[data-search-list]')
 		const searchLabel = searchMenu.querySelector('.search-query-menu__label');
 		const searchClear = document.querySelector('[data-search-clear]');
-		const searchToQueries = searchMenu.querySelector('.search-query-menu__item--queries');
+		const searchAllBtn = searchMenu.querySelector('[data-search-all]');
 
 		const optionsList = Array.from(searchList.children)
-		const optionsCount = optionsList.length;
+		let optionsCount = optionsList.length;
 		let optionHoveredIndex = -1;
-
-		function searchQueryChange() {
-			if (searchQuery.value != '') {
-				searchMenu.setAttribute('data-search-menu', 'queries');
-				searchLabel.classList.add('hidden');
-				searchClear.setAttribute('tabindex', '0');
-				searchClear.classList.add('active');
-				searchToQueries.classList.add('active');
-			} else {
-				searchQuery.focus()
-				searchMenu.setAttribute('data-search-menu', 'recent');
-				searchLabel.classList.remove('hidden');
-				searchClear.classList.remove('active');
-				searchClear.setAttribute('tabindex', '-1');
-				searchToQueries.classList.remove('active');
-			}
-		}
 
 		function searchMenuOpen() {
 			searchMenu.classList.add('active');
 			searchQuery.setAttribute('aria-expanded', 'true');
 			searchQueryChange()
+			window.addEventListener('keydown', supportKeyboardNavigation);
 		}
 
 		function searchMenuClose() {
@@ -42,16 +24,104 @@ import vars from "../_vars";
 			searchMenu.classList.remove('active');
 			searchClear.classList.remove('active');
 			searchClear.setAttribute('tabindex', '-1');
+			window.removeEventListener('keydown', supportKeyboardNavigation);
 		}
 
-		// открытие списка результатов при фокусе на поле поиска
+		function searchQueryChange() {
+			if (searchQuery.value != '') {
+				optionsCount = optionsList.length - 1
+				searchMenu.setAttribute('data-search-menu', 'queries');
+				searchLabel.classList.add('hidden');
+				searchClear.setAttribute('tabindex', '0');
+				searchClear.classList.add('active');
+				searchAllBtn.style.display = 'flex';
+				updateSearchOption(optionHoveredIndex);
+			} else {
+				optionsCount = optionsList.length - 2
+				searchQuery.focus()
+				searchMenu.setAttribute('data-search-menu', 'recent');
+				searchLabel.classList.remove('hidden');
+				searchClear.classList.remove('active');
+				searchClear.setAttribute('tabindex', '-1');
+				searchAllBtn.style.display = 'none';
+			}
+
+			if (!searchMenu.classList.contains('active')) {
+				searchMenuOpen()
+			}
+		}
+
+		function updateSearchOption(newIndex) {
+			const prevOption = searchList.children[optionHoveredIndex];
+			const option = searchList.children[newIndex];
+
+			if (prevOption) {
+				prevOption.classList.remove("focused");
+			}
+
+			if (option) {
+				option.classList.add("focused");
+			}
+
+			if (option != optionsList[optionsCount]) {
+				optionsList[optionsCount].classList.remove('focused')
+			}
+
+			optionHoveredIndex = newIndex;
+		}
+
+		function supportKeyboardNavigation(e) {
+			// перемещние вниз по списку результов
+			if (e.key == "ArrowDown" && searchMenu.classList.contains('active') && optionHoveredIndex < optionsCount) {
+				e.preventDefault();
+				updateSearchOption(optionHoveredIndex + 1);
+			} else if (e.key == "ArrowDown" && searchMenu.classList.contains('active') && optionHoveredIndex >= optionsCount) {
+				e.preventDefault();
+				optionHoveredIndex = 0;
+				updateSearchOption(optionHoveredIndex);
+			}
+
+			// перемещние вверх по списку результов
+			if (e.key == "ArrowUp" && searchMenu.classList.contains('active') && optionHoveredIndex > 0) {
+				e.preventDefault();
+				updateSearchOption(optionHoveredIndex - 1);
+			} else if (e.key == "ArrowUp" && searchMenu.classList.contains('active') && optionHoveredIndex <= 0) {
+				e.preventDefault();
+				updateSearchOption(optionsCount);
+			}
+
+			// переход по ссылке в списке результатов
+			if (e.key == "Enter" && searchMenu.classList.contains('active')) {
+				const option = searchList.children[optionHoveredIndex];
+
+				if (!option.hasAttribute('data-search-all')) {
+					e.preventDefault();
+					const link = option.querySelector('a')
+					const href = link.getAttribute('href')
+					document.location = href
+				}
+			}
+
+			// очистка списка результатов
+			if (e.key == "Escape" && searchMenu.classList.contains('active')) {
+				searchQuery.value = ''
+				searchQueryChange()
+			}
+
+			// закрытие списка результатов
+			if (e.key == "Tab" && searchMenu.classList.contains('active') && e.target.closest('[data-search-clear]')) {
+				searchMenuClose()
+			} else if (e.key == "Tab" && searchMenu.classList.contains('active') && !searchClear.classList.contains('active')) {
+				searchMenuClose()
+			} else if (e.shiftKey && e.key == "Tab" && searchMenu.classList.contains('active')) {
+				searchMenuClose()
+			}
+		}
+
+		// открытие списка результатов
     searchQuery.addEventListener('focus', searchMenuOpen);
 
-		// смена списка результатов при вводе запросов
-    searchQuery.addEventListener('keyup', searchQueryChange);
-		searchQuery.addEventListener('keydown', searchQueryChange);
-
-		// закрытие списка результатов по клику
+		// закрытие списка результатов
     window.addEventListener('click', (e) => {
       const target = e.target
 
@@ -66,59 +136,14 @@ import vars from "../_vars";
       }
     });
 
-		function updateCustomSelectHovered(newIndex) {
-			const prevOption = searchList.children[optionHoveredIndex];
-			const option = searchList.children[newIndex];
-
-			if (prevOption) {
-				prevOption.classList.remove("focused");
-			}
-			if (option) {
-				option.classList.add("focused");
-			}
-
-			optionHoveredIndex = newIndex;
-		}
-
-		// очистка / закрытие списка результатов по нажатию
-		window.addEventListener('keydown', (e) => {
-      const target = e.target
-
-			// press down -> go next
-			if (e.key == "ArrowDown" && searchMenu.classList.contains('active') && searchMenu.getAttribute('data-search-menu') == 'recent' && optionHoveredIndex < optionsCount - 2) {
-				e.preventDefault();
-				updateCustomSelectHovered(optionHoveredIndex + 1);
-			} else if (e.key == "ArrowDown" && searchMenu.classList.contains('active') && searchMenu.getAttribute('data-search-menu') == 'queries' && optionHoveredIndex < optionsCount - 1) {
-				e.preventDefault();
-				updateCustomSelectHovered(optionHoveredIndex + 1);
-			}
-
-			// press up -> go previous
-			if (e.key == "ArrowUp" && searchMenu.classList.contains('active') && optionHoveredIndex > 0) {
-				e.preventDefault();
-				updateCustomSelectHovered(optionHoveredIndex - 1);
-			}
-
-			// очистка списка результатов при нажатие на ESC
-			if (e.key == "Escape" && searchMenu.classList.contains('active')) {
-				searchQuery.value = ''
-				searchQueryChange()
-			}
-
-			// закрытие списка результатов при нажатие на Tab
-			if (e.key == "Tab" && searchMenu.classList.contains('active') && target.closest('[data-search-clear]')) {
-				searchMenuClose()
-			} else if (e.key == "Tab" && searchMenu.classList.contains('active') && !searchClear.classList.contains('active')) {
-				searchMenuClose()
-			} else if (e.shiftKey && e.key == "Tab" && searchMenu.classList.contains('active')) {
-				searchMenuClose()
-			}
-		});
-
-		// очистка списка результатов по клику на кнопку
-		searchClear.addEventListener('click', (e) => {
+		// очистка списка результатов
+		searchClear.addEventListener('click', () => {
 			searchQuery.value = ''
 			searchQueryChange()
 		})
+
+		// смена списка результатов
+		searchQuery.addEventListener('keyup', searchQueryChange);
+		searchQuery.addEventListener('keydown', searchQueryChange);
   }
 })();
