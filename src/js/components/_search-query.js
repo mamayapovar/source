@@ -22,8 +22,6 @@
 			searchQuery.setAttribute('aria-expanded', 'false');
 			searchQuery.blur();
 			searchMenu.classList.remove('active');
-			searchClear.classList.remove('active');
-			searchClear.setAttribute('tabindex', '-1');
 			window.removeEventListener('keydown', supportKeyboardNavigation);
 		}
 
@@ -94,7 +92,7 @@
 			if (e.key == "Enter" && searchMenu.classList.contains('active')) {
 				const option = searchList.children[optionHoveredIndex];
 
-				if (!option.hasAttribute('data-search-all')) {
+				if (option.hasAttribute('data-search-link')) {
 					e.preventDefault();
 					const link = option.querySelector('a')
 					const href = link.getAttribute('href')
@@ -122,6 +120,7 @@
     searchQuery.addEventListener('focus', searchMenuOpen);
 
 		// закрытие списка результатов
+		searchClear.addEventListener('focusin', searchMenuClose)
     window.addEventListener('click', (e) => {
       const target = e.target
 
