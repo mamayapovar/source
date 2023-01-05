@@ -127,6 +127,7 @@
 					const link = option.querySelector('a')
 					const href = link.getAttribute('href')
 					document.location = href
+					searchMenuClose()
 				}
 			}
 
