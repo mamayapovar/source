@@ -3,11 +3,9 @@
 		const searchQuery = document.querySelector('[data-search-query]');
 		const searchMenu = document.querySelector('[data-search-menu]');
 		const searchList = document.querySelector('[data-search-list]')
-		const searchLabel = searchMenu.querySelector('.search-query-menu__label');
 		const searchClear = document.querySelector('[data-search-clear]');
-		const searchAllBtn = searchMenu.querySelector('[data-search-all]');
 
-		const optionsList = Array.from(searchList.children)
+		let optionsList = Array.from(searchList.children)
 		let optionsCount = optionsList.length;
 		let optionHoveredIndex = -1;
 
@@ -19,29 +17,43 @@
 		}
 
 		function searchMenuClose() {
+			searchMenu.classList.remove('active');
 			searchQuery.setAttribute('aria-expanded', 'false');
 			searchQuery.blur();
-			searchMenu.classList.remove('active');
 			window.removeEventListener('keydown', supportKeyboardNavigation);
 		}
 
+		function searchQueryClear() {
+			searchQuery.value = ''
+			searchQueryChange()
+		}
+
 		function searchQueryChange() {
+			const searchAllBtn = document.querySelector('[data-search-all]');
+			const searchLabel = searchMenu.querySelector('.search-query-menu__label');
+
 			if (searchQuery.value != '') {
-				optionsCount = optionsList.length - 1
 				searchMenu.setAttribute('data-search-menu', 'queries');
 				searchLabel.classList.add('hidden');
 				searchClear.setAttribute('tabindex', '0');
 				searchClear.classList.add('active');
-				searchAllBtn.style.display = 'flex';
 				updateSearchOption(optionHoveredIndex);
+
+				if (!searchAllBtn) {
+					addSearchAllBtn()
+				}
+
 			} else {
-				optionsCount = optionsList.length - 2
 				searchQuery.focus()
 				searchMenu.setAttribute('data-search-menu', 'recent');
 				searchLabel.classList.remove('hidden');
 				searchClear.classList.remove('active');
 				searchClear.setAttribute('tabindex', '-1');
-				searchAllBtn.style.display = 'none';
+				updateSearchOption(optionHoveredIndex);
+
+				if (searchAllBtn) {
+					searchAllBtn.remove()
+				}
 			}
 
 			if (!searchMenu.classList.contains('active')) {
@@ -49,7 +61,25 @@
 			}
 		}
 
+		function addSearchAllBtn() {
+			const searchAllBtn = document.createElement('li')
+			searchAllBtn.classList.add('search-query-menu__item')
+			searchAllBtn.setAttribute('data-search-all', '')
+			searchAllBtn.innerHTML = `
+				<button type="submit" form="search-form" class="btn-reset  search-query-menu__link" tabindex="-1">
+					<svg class="icon" aria-hidden="true" focusable="false">
+						<use href="img/sprite.svg#arrow-down-left"/>
+					</svg>
+					<span>Перейти к запросам</span>
+				</button>
+			`
+
+			searchList.append(searchAllBtn)
+		}
+
 		function updateSearchOption(newIndex) {
+			optionsList = Array.from(searchList.children)
+			optionsCount = optionsList.length - 1
 			const prevOption = searchList.children[optionHoveredIndex];
 			const option = searchList.children[newIndex];
 
@@ -102,8 +132,7 @@
 
 			// очистка списка результатов
 			if (e.key == "Escape" && searchMenu.classList.contains('active')) {
-				searchQuery.value = ''
-				searchQueryChange()
+				searchQueryClear()
 			}
 
 			// закрытие списка результатов
@@ -125,7 +154,7 @@
       const target = e.target
 
 			// закрытие списка результатов при клике по ссылке
-			if (target.closest('[data-search-item]') && searchMenu.classList.contains('active')) {
+			if (target.closest('[data-search-link]') || target.closest('[data-search-all]') &&  searchMenu.classList.contains('active')) {
 				searchMenuClose()
 			}
 
@@ -136,10 +165,7 @@
     });
 
 		// очистка списка результатов
-		searchClear.addEventListener('click', () => {
-			searchQuery.value = ''
-			searchQueryChange()
-		})
+		searchClear.addEventListener('click', searchQueryClear)
 
 		// смена списка результатов
 		searchQuery.addEventListener('keyup', searchQueryChange);
