@@ -45,6 +45,12 @@
 
   &__item {
     display: flex;
+
+    &.focused {
+      .content-more-menu__button {
+        background-color: var(--color-bg-island-hover);
+      }
+    }
   }
 
   &__button {
@@ -58,8 +64,7 @@
     background-color: var(--color-bg-island);
     transition: background-color 0.2s ease;
 
-    &:hover,
-    &.focus-visible {
+    &:hover {
       background-color: var(--color-bg-island-hover);
     }
   }

@@ -59,6 +59,13 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
+    &.focused {
+      .header-profile-menu__link {
+        outline: none;
+        background-color: var(--color-bg-island-hover);
+      }
+    }
   }
 
   &__label {
@@ -90,8 +97,7 @@
       fill: var(--color-icons-secondary);
     }
 
-    &:hover,
-    &.focus-visible {
+    &:hover {
       outline: none;
       background-color: var(--color-bg-island-hover);
     }
