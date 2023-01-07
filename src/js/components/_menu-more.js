@@ -54,29 +54,29 @@
 
 		function supportKeyboardNavigation(e, menuMoreToggle, menuMore) {
 			menuMore.forEach((menu) => {
-				if (e.key == "ArrowDown" && menu.classList.contains('active') && optionHoveredIndex < optionsCount) {
+				if (e.key === "ArrowDown" && menu.classList.contains('active') && optionHoveredIndex < optionsCount) {
 					e.preventDefault();
 					updateOption(optionHoveredIndex + 1, menu);
-				} else if (e.key == "ArrowDown" && menu.classList.contains('active') && optionHoveredIndex >= optionsCount) {
+				} else if (e.key === "ArrowDown" && menu.classList.contains('active') && optionHoveredIndex >= optionsCount) {
 					e.preventDefault();
 					optionHoveredIndex = 0;
 					updateOption(optionHoveredIndex, menu);
 				}
 
-				if (e.key == "ArrowUp" && menu.classList.contains('active') && optionHoveredIndex > 0) {
+				if (e.key === "ArrowUp" && menu.classList.contains('active') && optionHoveredIndex > 0) {
 					e.preventDefault();
 					updateOption(optionHoveredIndex - 1, menu);
-				} else if (e.key == "ArrowUp" && menu.classList.contains('active') && optionHoveredIndex <= 0) {
+				} else if (e.key === "ArrowUp" && menu.classList.contains('active') && optionHoveredIndex <= 0) {
 					e.preventDefault();
 					updateOption(optionsCount, menu);
 				}
 
-				if (e.key == "Escape" || e.key == "Tab" && menu.classList.contains('active')) {
+				if (e.key === "Escape" || e.key === "Tab" && menu.classList.contains('active')) {
 					closeMenu(menuMoreToggle, menuMore)
 				}
 			})
 
-			// if (e.key == "Enter" && menuMore.classList.contains('active')) {
+			// if (e.key === "Enter" && menuMore.classList.contains('active')) {
 			// 	e.preventDefault();
 			// 	const option = menuMore.children[optionHoveredIndex];
 			// 	const optionLink = option && option.hasAttribute('data-menu-more-item')

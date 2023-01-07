@@ -100,26 +100,26 @@
 
 		function supportKeyboardNavigation(e) {
 			// перемещние вниз по списку результов
-			if (e.key == "ArrowDown" && searchMenu.classList.contains('active') && optionHoveredIndex < optionsCount) {
+			if (e.key === "ArrowDown" && searchMenu.classList.contains('active') && optionHoveredIndex < optionsCount) {
 				e.preventDefault();
 				updateSearchOption(optionHoveredIndex + 1);
-			} else if (e.key == "ArrowDown" && searchMenu.classList.contains('active') && optionHoveredIndex >= optionsCount) {
+			} else if (e.key === "ArrowDown" && searchMenu.classList.contains('active') && optionHoveredIndex >= optionsCount) {
 				e.preventDefault();
 				optionHoveredIndex = 0;
 				updateSearchOption(optionHoveredIndex);
 			}
 
 			// перемещние вверх по списку результов
-			if (e.key == "ArrowUp" && searchMenu.classList.contains('active') && optionHoveredIndex > 0) {
+			if (e.key === "ArrowUp" && searchMenu.classList.contains('active') && optionHoveredIndex > 0) {
 				e.preventDefault();
 				updateSearchOption(optionHoveredIndex - 1);
-			} else if (e.key == "ArrowUp" && searchMenu.classList.contains('active') && optionHoveredIndex <= 0) {
+			} else if (e.key === "ArrowUp" && searchMenu.classList.contains('active') && optionHoveredIndex <= 0) {
 				e.preventDefault();
 				updateSearchOption(optionsCount);
 			}
 
 			// переход по ссылке в списке результатов
-			if (e.key == "Enter" && searchMenu.classList.contains('active')) {
+			if (e.key === "Enter" && searchMenu.classList.contains('active')) {
 				const option = searchList.children[optionHoveredIndex];
 
 				if (option.hasAttribute('data-search-link')) {
@@ -132,16 +132,16 @@
 			}
 
 			// очистка списка результатов
-			if (e.key == "Escape" && searchMenu.classList.contains('active')) {
+			if (e.key === "Escape" && searchMenu.classList.contains('active')) {
 				searchQueryClear()
 			}
 
 			// закрытие списка результатов
-			if (e.key == "Tab" && searchMenu.classList.contains('active') && e.target.closest('[data-search-clear]')) {
+			if (e.key === "Tab" && searchMenu.classList.contains('active') && e.target.closest('[data-search-clear]')) {
 				searchMenuClose()
-			} else if (e.key == "Tab" && searchMenu.classList.contains('active') && !searchClear.classList.contains('active')) {
+			} else if (e.key === "Tab" && searchMenu.classList.contains('active') && !searchClear.classList.contains('active')) {
 				searchMenuClose()
-			} else if (e.shiftKey && e.key == "Tab" && searchMenu.classList.contains('active')) {
+			} else if (e.shiftKey && e.key === "Tab" && searchMenu.classList.contains('active')) {
 				searchMenuClose()
 			}
 		}
