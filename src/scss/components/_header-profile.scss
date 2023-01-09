@@ -63,7 +63,7 @@
     &.focused {
       .header-profile-menu__link {
         outline: none;
-        background-color: var(--color-bg-island-hover);
+        background-color: var(--color-bg-island-hover-inverse);
       }
     }
   }
@@ -99,7 +99,7 @@
 
     &:hover {
       outline: none;
-      background-color: var(--color-bg-island-hover);
+      background-color: var(--color-bg-island-hover-inverse);
     }
   }
 

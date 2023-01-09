@@ -13,6 +13,8 @@
 			searchMenu.classList.add('active');
 			searchQuery.setAttribute('aria-expanded', 'true');
 			searchQueryChange()
+
+			window.addEventListener('click', watchClickOutside);
 			window.addEventListener('keydown', supportKeyboardNavigation);
 		}
 
@@ -20,6 +22,9 @@
 			searchMenu.classList.remove('active');
 			searchQuery.setAttribute('aria-expanded', 'false');
 			searchQuery.blur();
+			updateSearchOption(-1);
+
+			window.removeEventListener('click', watchClickOutside);
 			window.removeEventListener('keydown', supportKeyboardNavigation);
 		}
 
@@ -98,6 +103,13 @@
 			optionHoveredIndex = newIndex;
 		}
 
+		function watchClickOutside(e) {
+			const target = e.target
+      if (target !== searchQuery && target !== searchMenu && target !== searchClear) {
+				searchMenuClose()
+      }
+		}
+
 		function supportKeyboardNavigation(e) {
 			// перемещние вниз по списку результов
 			if (e.key === "ArrowDown" && searchMenu.classList.contains('active') && optionHoveredIndex < optionsCount) {
@@ -146,23 +158,15 @@
 			}
 		}
 
-		// открытие списка результатов
     searchQuery.addEventListener('focus', searchMenuOpen);
-
-		// закрытие списка результатов
 		searchClear.addEventListener('focusin', searchMenuClose)
+
     window.addEventListener('click', (e) => {
       const target = e.target
 
-			// закрытие списка результатов при клике по ссылке
-			if (target.closest('[data-search-link]') || target.closest('[data-search-all]') &&  searchMenu.classList.contains('active')) {
+			if (target.closest('[data-search-link]') || target.closest('[data-search-all]') && searchMenu.classList.contains('active')) {
 				searchMenuClose()
 			}
-
-			// закрытие списка результатов при клике вне окна
-      if (!target.closest('[data-search-query]') && !target.closest('[data-search-menu]') && !target.closest('[data-search-clear]')) {
-				searchMenuClose()
-      }
     });
 
 		// очистка списка результатов

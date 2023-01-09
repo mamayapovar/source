@@ -86,22 +86,22 @@
 									</a>
 									<a href="user.html" class="content-info__author">Екатерина Георгадзе</a>
 									<time class="content-info__date" datetime="2022-12-02 16:00">3 часа</time>
-									<div class="content-more">
-										<button class="btn-reset  content-more__toggle" aria-label="Открыть меню действий" aria-expanded="false" data-more-menu-toggle>
+									<div class="content-more" data-menu-more>
+										<button class="btn-reset  content-more__toggle" aria-label="Открыть меню действий" aria-expanded="false" data-menu-more-toggle>
 											<svg class="icon" aria-hidden="true" focusable="false">
 												<use href="img/sprite.svg#more-horizontal"/>
 											</svg>
 										</button>
-										<ul class="list-reset  content-more-menu" data-more-menu>
-											<li class="content-more-menu__item">
-												<button class="btn-reset  content-more-menu__button">Пожаловаться</button>
+										<ul class="list-reset  content-more-menu" data-menu-more-list>
+											<li class="content-more-menu__item" data-menu-more-item>
+												<button class="btn-reset  content-more-menu__button" tabindex="-1">Пожаловаться</button>
 											</li>
-											<!-- <li class="content-more-menu__item">
-												<button class="btn-reset  content-more-menu__button">Редактировать</button>
+											<li class="content-more-menu__item" data-menu-more-item>
+												<button class="btn-reset  content-more-menu__button" tabindex="-1">Редактировать</button>
 											</li>
-											<li class="content-more-menu__item">
-												<button class="btn-reset  content-more-menu__button">Удалить</button>
-											</li> -->
+											<li class="content-more-menu__item" data-menu-more-item>
+												<button class="btn-reset  content-more-menu__button" tabindex="-1">Удалить</button>
+											</li>
 										</ul>
 									</div>
 								</div>
@@ -110,6 +110,34 @@
 									<p class="content-header__desc">Нежные, мягкие, воздушные «пухляши» — это любовь. Не можете покорить оладьи? Попробуйте этот рецепт, и все получится!</p>
 								</div>
 								<div class="content-short">
+									<div class="content-short-dropdown" data-short-ingredients>
+										<button class="btn-reset  content-short-dropdown__toggle" aria-label="Открыть список ингредиентов" aria-expanded="false" data-short-ingredients-toggle>
+											3 ингредиента
+											<svg class="icon  icon--16" aria-hidden="true" focusable="false">
+												<use href="img/sprite.svg#chevron-down"/>
+											</svg>
+										</button>
+										<div class="content-short-dropdown__menu  short-ingredients"  data-short-ingredients-list>
+											<dl class="short-ingredients__item" data-short-ingredients-item>
+												<dt class="short-ingredients__name">
+													<span>Яйцо куриное</span>
+												</dt>
+												<dd class="short-ingredients__details">1 шт</dd>
+											</dl>
+											<dl class="short-ingredients__item" data-short-ingredients-item>
+												<dt class="short-ingredients__name">
+													<span>Кефир 2,5%</span>
+												</dt>
+												<dd class="short-ingredients__details">300 мл</dd>
+											</dl>
+											<dl class="short-ingredients__item" data-short-ingredients-item>
+												<dt class="short-ingredients__name">
+													<span>Сахар</span>
+												</dt>
+												<dd class="short-ingredients__details">2 столовые ложки</dd>
+											</dl>
+										</div>
+									</div>
 									<ul class="list-reset content-short__list">
 										<li class="content-short__item">
 											<svg class="icon  icon--16" aria-hidden="true" focusable="false">

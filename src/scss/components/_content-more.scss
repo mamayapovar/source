@@ -48,7 +48,7 @@
 
     &.focused {
       .content-more-menu__button {
-        background-color: var(--color-bg-island-hover);
+        background-color: var(--color-bg-island-hover-inverse);
       }
     }
   }
@@ -65,7 +65,7 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: var(--color-bg-island-hover);
+      background-color: var(--color-bg-island-hover-inverse);
     }
   }
 
