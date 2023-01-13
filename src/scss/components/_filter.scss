@@ -1,0 +1,55 @@
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 12px;
+  background: var(--color-bg-island);
+
+  &__clear {
+    color: var(--color-text-secondary);
+    background-color: transparent;
+
+    &:hover,
+    &.focus-visible {
+      color: var(--color-text-primary);
+      background-color: var(--color-bg-island-hover-inverse);
+    }
+
+    &:active {
+      color: var(--color-text-primary);
+      background-color: transparent;
+    }
+
+    &:disabled,
+    &.disabled {
+      color: var(--color-text-disabled);
+      background-color: transparent;
+    }
+  }
+
+  &__list {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+    gap: 8px;
+  }
+
+  &__item {
+
+  }
+
+  &__toggle {
+
+  }
+}
+
+.filter-menu {
+  &__item {
+
+  }
+
+  &__button {
+
+  }
+}

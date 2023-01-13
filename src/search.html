@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#111111">
+    <title>вкусняшки от катюши — Мама, я повар!</title>
+    <link rel="preload" href="fonts/NunitoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/NunitoSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/NunitoSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="js/main.js"></script>
+  </head>
+
+  <body class="page__body">
+    @include('partials/header-auth.html')
+
+    <div class="container">
+      <div class="site-container">
+        <nav class="sidebar">
+					<div class="sidebar__inner">
+						<div class="sidebar-tree">
+							<ul class="list-reset sidebar-tree__list" id="sidebar-tabs">
+								<li class="sidebar-tree__item">
+									<a href="index.html" class="sidebar-tree__link">
+										<svg class="icon" aria-hidden="true" focusable="false">
+											<use href="img/sprite.svg#clock"/>
+										</svg>
+										<span>Свежее</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<a href="bookmarks.html" class="sidebar-tree__link">
+										<svg class="icon" aria-hidden="true" focusable="false">
+											<use href="img/sprite.svg#bookmark"/>
+										</svg>
+										<span>Закладки</span>
+									</a>
+								</li>
+							</ul>
+							<ul class="list-reset sidebar-tree__list" id="sidebar-links">
+								<li class="sidebar-tree__item">
+									<a href="category.html" class="sidebar-tree__link">
+										<img src="img/category/bake-icon.svg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Выпечка</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<a href="user.html" class="sidebar-tree__link">
+										<img src="img/placeholder-avatar-dark.jpg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Екатерина Георгадзе</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<a href="user.html" class="sidebar-tree__link">
+										<img src="img/placeholder-avatar-dark.jpg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Алексей Калинин</span>
+									</a>
+								</li>
+								<li class="sidebar-tree__item">
+									<a href="user.html" class="sidebar-tree__link">
+										<img src="img/placeholder-avatar-dark.jpg" class="sidebar-tree__avatar" loading="lazy" alt="">
+										<span>Николай Крылов</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="sidebar-footer">
+							<a href="https://sonniy.notion.site/72491004fa1044d8b0dccf9cdeb44053" target="_blank" class="sidebar-footer__link">О проекте</a>
+						</div>
+					</div>
+				</nav>
+
+        <main class="search">
+					<div class="info  search__info">
+						<div class="info__inner">
+							<h1 class="section-h1  info__name">вкусняшки от катюши</h1>
+							<p class="info__desc">Найдено 4 результата</p>
+						</div>
+					</div>
+					<div class="filter  search__filter">
+						<div class="filter__list">
+							<div class="filter__item" data-filter>
+								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Тип результатов»" aria-expanded="false" data-filter-toggle>
+									Тип
+									<svg class="icon icon--16" aria-hidden="true" focusable="false">
+										<use href="img/sprite.svg#chevron-down"/>
+									</svg>
+								</button>
+								<ul class="list-reset  filter-menu" data-filter-menu>
+									<li class="filter-menu__item" data-filter-item>
+										<button class="btn-reset filter-menu__btn">Рецепт</button>
+									</li>
+									<li class="filter-menu__item" data-filter-item>
+										<button class="btn-reset filter-menu__btn">Автор</button>
+									</li>
+									<li class="filter-menu__item" data-filter-item>
+										<button class="btn-reset filter-menu__btn" disabled>Комментарий</button>
+									</li>
+								</ul>
+							</div>
+							<div class="filter__item" data-filter>
+								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Тип результатов»" aria-expanded="false" data-filter-toggle>
+									Время приготовления
+									<svg class="icon icon--16" aria-hidden="true" focusable="false">
+										<use href="img/sprite.svg#chevron-down"/>
+									</svg>
+								</button>
+								<ul class="list-reset  filter-menu" data-filter-menu>
+									<li class="filter-menu__item" data-filter-item>
+										<button class="btn-reset filter-menu__btn">Менее 30 минут</button>
+									</li>
+									<li class="filter-menu__item" data-filter-item>
+										<button class="btn-reset filter-menu__btn">От 30 минут до 2 часов</button>
+									</li>
+									<li class="filter-menu__item" data-filter-item>
+										<button class="btn-reset filter-menu__btn">Более 2 часов</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<button class="btn  filter__clear" data-filter-clear>Очистить фильтры</button>
+					</div>
+					<div class="feed  search__feed">
+						@include('partials/feed-item.html')
+						@include('partials/feed-item.html')
+						@include('partials/feed-item.html')
+					</div>
+        </main>
+      </div>
+    </div>
+    @include('partials/modals.html')
+		@include('partials/svg-scripts.html')
+  </body>
+</html>
