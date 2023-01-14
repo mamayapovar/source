@@ -13,12 +13,12 @@
     &:hover,
     &.focus-visible {
       color: var(--color-text-primary);
-      background-color: var(--color-bg-island-hover-inverse);
+      background-color: transparent;
     }
 
     &:active {
-      color: var(--color-text-primary);
       background-color: transparent;
+      opacity: 0.6;
     }
 
     &:disabled,
@@ -36,20 +36,118 @@
   }
 
   &__item {
-
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 12px 12px 12px 16px;
+    font-weight: 600;
+    font-size: var(--font-s);
+    line-height: var(--lh-primary);
+    color: var(--color-text-primary);
+    background: var(--color-bg-island);
+    transition: color 0.2s ease, background-color 0.2s ease;
 
+    .icon {
+      margin-left: 8px;
+      fill: var(--color-icons-primary);
+    }
+
+    &:hover,
+    &.focus-visible {
+      outline: none;
+      background-color: var(--color-bg-island-hover-inverse);
+    }
+
+    &:disabled,
+    &.disabled {
+      color: var(--color-text-disabled);
+      background-color: var(--color-bg-island);
+      cursor: not-allowed;
+
+      .icon {
+        fill: var(--color-text-disabled);
+      }
+    }
+
+    &.active {
+      background-color: var(--color-bg-island-hover-inverse);
+
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    &.apply {
+      color: var(--color-text-accent);
+
+      .icon {
+        fill: var(--color-icons-accent);
+      }
+    }
   }
 }
 
 .filter-menu {
-  &__item {
+  position: absolute;
+  left: 0;
+  top: 56px;
+  z-index: 6;
+  display: grid;
+  border: 1px solid var(--color-bg-global);
+  border-radius: 8px;
+  padding: 16px 12px;
+  width: 270px;
+  box-shadow: var(--elevation-1);
+  background-color: var(--color-bg-island);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.15s ease, transform 0.2s ease;
+  pointer-events: none;
+  gap: 4px;
 
+  &__item {
+    display: flex;
+
+    &.focused {
+      .filter-menu__btn {
+        outline: none;
+        background-color: var(--color-bg-island-hover-inverse);
+      }
+    }
   }
 
-  &__button {
+  &__btn {
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 4px;
+    padding: 12px 16px;
+    width: 100%;
+    font-size: var(--font-s);
+    line-height: var(--lh-primary);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-island);
+    transition: color 0.2s ease, background-color 0.2s ease;
 
+    &:hover {
+      outline: none;
+      background-color: var(--color-bg-island-hover-inverse);
+    }
+
+    &.selected {
+      color: var(--color-text-accent);
+    }
+  }
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: inherit;
   }
 }

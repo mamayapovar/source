@@ -84,26 +84,23 @@
 					<div class="filter  search__filter">
 						<div class="filter__list">
 							<div class="filter__item" data-filter>
-								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Тип результатов»" aria-expanded="false" data-filter-toggle>
+								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Тип»" aria-expanded="false" data-filter-toggle="type">
 									Тип
 									<svg class="icon icon--16" aria-hidden="true" focusable="false">
 										<use href="img/sprite.svg#chevron-down"/>
 									</svg>
 								</button>
 								<ul class="list-reset  filter-menu" data-filter-menu>
-									<li class="filter-menu__item" data-filter-item>
-										<button class="btn-reset filter-menu__btn">Рецепт</button>
+									<li class="filter-menu__item" data-filter-item="recipe">
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Рецепт</a>
 									</li>
-									<li class="filter-menu__item" data-filter-item>
-										<button class="btn-reset filter-menu__btn">Автор</button>
-									</li>
-									<li class="filter-menu__item" data-filter-item>
-										<button class="btn-reset filter-menu__btn" disabled>Комментарий</button>
+									<li class="filter-menu__item" data-filter-item="author">
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Автор</a>
 									</li>
 								</ul>
 							</div>
 							<div class="filter__item" data-filter>
-								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Тип результатов»" aria-expanded="false" data-filter-toggle>
+								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Время приготовления»" aria-expanded="false" data-filter-toggle="cooking-time">
 									Время приготовления
 									<svg class="icon icon--16" aria-hidden="true" focusable="false">
 										<use href="img/sprite.svg#chevron-down"/>
@@ -111,13 +108,32 @@
 								</button>
 								<ul class="list-reset  filter-menu" data-filter-menu>
 									<li class="filter-menu__item" data-filter-item>
-										<button class="btn-reset filter-menu__btn">Менее 30 минут</button>
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Менее 30 минут</a>
 									</li>
 									<li class="filter-menu__item" data-filter-item>
-										<button class="btn-reset filter-menu__btn">От 30 минут до 2 часов</button>
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">От 30 минут до 2 часов</a>
 									</li>
 									<li class="filter-menu__item" data-filter-item>
-										<button class="btn-reset filter-menu__btn">Более 2 часов</button>
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Более 2 часов</a>
+									</li>
+								</ul>
+							</div>
+							<div class="filter__item" data-filter="ingredients">
+								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Количество ингредиентов»" aria-expanded="false" data-filter-toggle="ingredients">
+									Ингредиенты
+									<svg class="icon icon--16" aria-hidden="true" focusable="false">
+										<use href="img/sprite.svg#chevron-down"/>
+									</svg>
+								</button>
+								<ul class="list-reset  filter-menu" data-filter-menu>
+									<li class="filter-menu__item" data-filter-item>
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Менее 5 ингредиентов</a>
+									</li>
+									<li class="filter-menu__item" data-filter-item>
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">От 5 до 10 ингредиентов</a>
+									</li>
+									<li class="filter-menu__item" data-filter-item>
+										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Более 10 ингредиентов</a>
 									</li>
 								</ul>
 							</div>
