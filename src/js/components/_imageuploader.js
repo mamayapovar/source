@@ -1,14 +1,12 @@
-import vars from "../_vars";
-
-if (vars.bodyEl.querySelector('.imageuploader')) {
+if (document.querySelector('.imageuploader')) {
 	(function(){
-		vars.bodyEl.addEventListener('click', (e) => {
+		document.addEventListener('click', (e) => {
 			const target = e.target
 			if (target.classList.contains('imageuploader__input')) {
-				const input = target.querySelector('input[type="file"]')
-				const image = target.parentNode.querySelector('.imageuploader__input')
+				const image = target
+				const input = image.querySelector('input[type="file"]')
+				const placeholder = image.querySelector('.imageuploader__placeholder')
 				const delBtn = target.parentNode.querySelector('.imageuploader__btn')
-				const placeholder = target.querySelector('.imageuploader__placeholder')
 				let uploadedImage = ""
 
 				input.addEventListener('change', () => {
@@ -23,15 +21,20 @@ if (vars.bodyEl.querySelector('.imageuploader')) {
 						reader.readAsDataURL(input.files[0])
 					}
 				})
+			}
 
-				delBtn.addEventListener('click', (button) => {
-					button.preventDefault()
-					input.value = "";
-					uploadedImage = ""
-					image.style.backgroundImage = 'none'
-					placeholder.classList.remove('hidden')
-					delBtn.classList.add('hidden')
-				})
+			if (target.classList.contains('imageuploader__btn')) {
+				const image = target.parentNode.querySelector('.imageuploader__input')
+				const input = image.querySelector('input[type="file"]')
+				const placeholder = image.querySelector('.imageuploader__placeholder')
+				const delBtn = target
+
+				e.preventDefault()
+				input.value = "";
+				uploadedImage = ""
+				image.style.backgroundImage = 'none'
+				placeholder.classList.remove('hidden')
+				delBtn.classList.add('hidden')
 			}
 		})
 	})();
