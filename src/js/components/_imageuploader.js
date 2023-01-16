@@ -12,13 +12,15 @@ if (document.querySelector('.imageuploader')) {
 				input.addEventListener('change', () => {
 					if (!input.value == "") {
 						const reader = new FileReader()
+						file = input.files[0] || input.dataTransfer.files[0]
+
 						reader.addEventListener('load', () => {
 							uploadedImage = reader.result
 							image.style.backgroundImage = `url(${uploadedImage})`
 							placeholder.classList.add('hidden')
 							delBtn.classList.remove('hidden')
 						})
-						reader.readAsDataURL(input.files[0])
+						reader.readAsDataURL(file)
 					}
 				})
 			}
