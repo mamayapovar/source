@@ -81,24 +81,8 @@
 							<p class="info__desc">Найдено 4 результата</p>
 						</div>
 					</div>
-					<div class="filter  search__filter">
+					<!-- <div class="filter  search__filter">
 						<div class="filter__list">
-							<div class="filter__item" data-filter>
-								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Тип»" aria-expanded="false" data-filter-toggle="type">
-									Тип
-									<svg class="icon icon--16" aria-hidden="true" focusable="false">
-										<use href="img/sprite.svg#chevron-down"/>
-									</svg>
-								</button>
-								<ul class="list-reset  filter-menu" data-filter-menu>
-									<li class="filter-menu__item" data-filter-item="recipe">
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Рецепт</a>
-									</li>
-									<li class="filter-menu__item" data-filter-item="author">
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Автор</a>
-									</li>
-								</ul>
-							</div>
 							<div class="filter__item" data-filter>
 								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Время приготовления»" aria-expanded="false" data-filter-toggle="cooking-time">
 									Время приготовления
@@ -106,41 +90,47 @@
 										<use href="img/sprite.svg#chevron-down"/>
 									</svg>
 								</button>
-								<ul class="list-reset  filter-menu" data-filter-menu>
-									<li class="filter-menu__item" data-filter-item>
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Менее 30 минут</a>
-									</li>
-									<li class="filter-menu__item" data-filter-item>
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">От 30 минут до 2 часов</a>
-									</li>
-									<li class="filter-menu__item" data-filter-item>
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Более 2 часов</a>
-									</li>
-								</ul>
+								<form action="https://echo.htmlacademy.ru" method="GET" name="filter" class="filter-menu" data-filter-menu>
+									<div class="filter-menu__item" data-filter-item>
+										<button value="30min" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Менее 30 минут</button>
+									</div>
+									<div class="filter-menu__item" data-filter-item>
+										<button value="30min2hours" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">От 30 минут до 2 часов</button>
+									</div>
+									<div class="filter-menu__item" data-filter-item>
+										<button value="2hours" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Более 2 часов</button>
+									</div>
+								</form>
 							</div>
-							<div class="filter__item" data-filter="ingredients">
+							<div class="filter__item" data-filter>
 								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Количество ингредиентов»" aria-expanded="false" data-filter-toggle="ingredients">
-									Ингредиенты
+									Кол-во ингредиентов
 									<svg class="icon icon--16" aria-hidden="true" focusable="false">
 										<use href="img/sprite.svg#chevron-down"/>
 									</svg>
 								</button>
-								<ul class="list-reset  filter-menu" data-filter-menu>
-									<li class="filter-menu__item" data-filter-item>
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Менее 5 ингредиентов</a>
-									</li>
-									<li class="filter-menu__item" data-filter-item>
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">От 5 до 10 ингредиентов</a>
-									</li>
-									<li class="filter-menu__item" data-filter-item>
-										<a href="" class="btn-reset filter-menu__btn" tabindex="-1">Более 10 ингредиентов</a>
-									</li>
-								</ul>
+								<form action="" method="GET" name="filter" class="filter-menu" class="filter-menu" data-filter-menu>
+									<div class="filter-menu__item" data-filter-item>
+										<button value="less5" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Менее 5 ингредиентов</button>
+									</div>
+									<div class="filter-menu__item" data-filter-item>
+										<button value="5to10" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">От 5 до 10 ингредиентов</button>
+									</div>
+									<div class="filter-menu__item" data-filter-item>
+										<button value="more10" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Более 10 ингредиентов</button>
+									</div>
+								</form>
 							</div>
 						</div>
-						<button class="btn  filter__clear" data-filter-clear>Очистить фильтры</button>
-					</div>
+						<button class="btn  filter__clear" data-filter-clear disabled>Очистить фильтры</button>
+					</div> -->
 					<div class="feed  search__feed">
+						<!-- Если результатов нет -->
+						<!-- <div class="feed-placeholder  bookmark__feed-placeholder">
+							<p class="feed-placeholder__desc">Мы все внимательно посмотрели, но ничего не нашли :(</p>
+							<p class="feed-placeholder__desc">Попробуйте изменить запрос или посмотрите другие блюда на <a href="index.html" class="section-link">главной</a></p>
+						</div> -->
+						<!-- Если результаты есть -->
 						@include('partials/feed-item.html')
 						@include('partials/feed-item.html')
 						@include('partials/feed-item.html')

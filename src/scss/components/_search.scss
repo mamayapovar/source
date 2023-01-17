@@ -1,12 +1,16 @@
 .search {
   display: grid;
   align-items: start;
+  gap: 48px;
 
-  &__info {
-    margin-bottom: 8px;
-  }
+  // display: flex;
+  // flex-direction: column;
 
-  &__filter {
-    margin-bottom: 48px;
-  }
+  // &__info {
+  //   margin-bottom: 8px;
+  // }
+
+  // &__filter {
+  //   margin-bottom: 48px;
+  // }
 }

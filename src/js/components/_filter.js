@@ -1,11 +1,9 @@
 (function(){
 	function filterPreInit(filterWrapper) {
-		const toggleCookingTime = document.querySelector('[data-filter-toggle="cooking-time"]')
-		const toggleIngredients = document.querySelector('[data-filter-toggle="ingredients"]')
-
 		const filterToggle = filterWrapper.querySelector('[data-filter-toggle]');
 		const filterMenu = filterWrapper.querySelector('[data-filter-menu]');
 		const filterItem = filterMenu.querySelectorAll('[data-filter-item]');
+		const filterClear = document.querySelector('[data-filter-clear]');
 
 		let optionsList = Array.from(filterMenu.children)
 		let optionsCount = optionsList.length;
@@ -110,9 +108,11 @@
 			if (e.key === "Enter" && filterMenu.classList.contains('active')) {
 				e.preventDefault();
 
+				// https://codepen.io/sandrina-p/pen/yLprQgj?editors=1111
+
 				// const option = filterMenu.children[optionHoveredIndex];
 				// if (option) {
-				// 	const link = option.querySelector('a')
+				// 	const link = option.querySelector('button')
 				// 	const href = link.getAttribute('href')
 				// 	document.location = href
 				// }
@@ -130,32 +130,38 @@
 		})
 
 		filterItem.forEach(item => {
+			const form = item.parentNode
 			const btn = item.querySelector('.filter-menu__btn')
+			const toggle = item.parentNode.parentNode.querySelector('[data-filter-toggle]')
 
 			item.addEventListener('click', (e) => {
 				e.preventDefault()
+				btn.classList.toggle('selected')
 
-				filterItem.forEach(anotherItem => {
-					const btn = anotherItem.querySelector('.filter-menu__btn')
-					btn.classList.remove('selected')
-				})
-				btn.classList.add('selected')
-
-				if (item.getAttribute('data-filter-item') == 'author') {
-					if (btn.classList.contains('selected')) {
-						toggleCookingTime.setAttribute('disabled', '')
-						toggleIngredients.setAttribute('disabled', '')
-					} else {
-						toggleCookingTime.removeAttribute('disabled')
-						toggleIngredients.removeAttribute('disabled')
-					}
-				} else if (item.getAttribute('data-filter-item') == 'recipe') {
-					toggleCookingTime.removeAttribute('disabled')
-					toggleIngredients.removeAttribute('disabled')
+				if (btn.classList.contains('selected')) {
+					toggle.classList.add('selected')
+					filterClear.removeAttribute('disabled')
+				} else {
+					toggle.classList.remove('selected')
+					filterClear.setAttribute('disabled', '')
 				}
-
 				closeMenu()
 			})
+		})
+
+		filterClear.addEventListener('click', () => {
+			const btns = filterMenu.querySelectorAll('.filter-menu__btn')
+			const toggle = document.querySelectorAll('.filter__toggle')
+
+			btns.forEach(el => {
+				el.classList.remove('selected')
+			})
+
+			toggle.forEach(el => {
+				el.classList.remove('selected')
+			})
+
+			filterClear.setAttribute('disabled', '')
 		})
 	}
 
