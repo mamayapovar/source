@@ -2,9 +2,11 @@
 	if (document.querySelector('#edit-recipe-form')) {
 		document.addEventListener('DOMContentLoaded', () => {
 			const imageuploader = document.querySelectorAll('.imageuploader')
+
 			imageuploader.forEach(uploader => {
+				console.log(uploader.getAttribute('data-image-url'));
 				(async function() {
-					if (uploader.getAttribute('data-image-url') != null || '') {
+					if (uploader.getAttribute('data-image-url') != '' && uploader.getAttribute('data-image-url') != null) {
 						const url = uploader.getAttribute('data-image-url')
 						const nameFile = uploader.getAttribute('data-image-name');
 						const image = uploader.querySelector('.imageuploader__input')
