@@ -1,8 +1,6 @@
-import vars from '../_vars';
-
 // ИГРЕДИЕНТЫ
-if (vars.bodyEl.querySelector('.ingredient')) {
-	(function(){
+(function(){
+	if (document.querySelector('.ingredient')) {
 		const ingredientSection = document.querySelector('.ingredient');
 		const ingredientList = ingredientSection.querySelector('.ingredient__list')
 		const ingredientAdd = ingredientSection.querySelector('.ingredient__btn')
@@ -13,42 +11,34 @@ if (vars.bodyEl.querySelector('.ingredient')) {
 			return Math.floor(Math.random() * Date.now())
 		}
 
-		function decimalAdjust(type, value, exp) {
-			if (typeof exp === 'undefined' || +exp === 0) {
-				return Math[type](value);
+		function numberFixed(number, fixed) {
+			if ((typeof number === 'number' || typeof number === 'string') && !isNaN(number - parseFloat(number))) {
+				number = String(number);
+				var split = number.split('.');
+				if (split.length > 1) {
+					var left = split[0];
+					var right = split[1].substr(0, (!fixed ? 1 : fixed));
+					return Number(left + (fixed !== 0 ? '.' + right : ''));
+				} else {
+					return Number(number);
+				}
 			}
-			value = +value;
-			exp = +exp;
-			if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
-				return NaN;
-			}
-			value = value.toString().split('e');
-			value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
-			value = value.toString().split('e');
-			return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
-		}
-
-		function round10(value, exp) {
-			return decimalAdjust('round', value, exp);
 		}
 
 		// проверка кол-ва ингредиентов
-		vars.bodyEl.addEventListener('click', () => {
+		document.addEventListener('click', () => {
 			let ingredientAmounts = ingredientSection.querySelectorAll('.ingredient-item__input--amount')
 
 			ingredientAmounts.forEach((input) => {
-				const max = input.getAttribute('max')
+				const max = 999
 
-				input.addEventListener('change', () => {
-					let currentValue = String(input.value)
-
+				input.addEventListener('blur', () => {
 					if (input.value > max - 1) {
 						input.value = max
-					} else if (input.value > 0.1 && currentValue.length > 3) {
-						input.value = round10(input.value, -1)
 					} else if (input.value <= 0.1) {
 						input.value = 0.1
 					}
+					input.value = numberFixed(input.value)
 				})
 			})
 		})
@@ -65,6 +55,7 @@ if (vars.bodyEl.querySelector('.ingredient')) {
 					const item = ingredientList.querySelector('.ingredient-item')
 					const del = item.querySelector('.ingredient-item__delete')
 					del.classList.add('disabled')
+					del.setAttribute('tabindex', '-1')
 				}
 
 				if (countOfFields < maxOfFields) {
@@ -88,6 +79,7 @@ if (vars.bodyEl.querySelector('.ingredient')) {
 				items.forEach(e => {
 					const del = e.querySelector('.ingredient-item__delete')
 					del.classList.remove('disabled')
+					del.removeAttribute('tabindex')
 				})
 			}
 
@@ -129,12 +121,12 @@ if (vars.bodyEl.querySelector('.ingredient')) {
 			`;
 			ingredientList.append(ingredientItem)
 		})
+	}
 })();
-}
 
 // ИНСТРУКЦИЯ ПРИГОТОВЛЕНИЯ
-if (vars.bodyEl.querySelector('.step')) {
-	(function(){
+(function(){
+	if (document.querySelector('.step')) {
 		const stepSection = document.querySelector('.step');
 		const stepList = stepSection.querySelector('.step__list')
 		const stepAdd = stepSection.querySelector('.step__btn')
@@ -162,6 +154,7 @@ if (vars.bodyEl.querySelector('.step')) {
 				const item = stepList.querySelector('.step-item')
 				const del = item.querySelector('.step-item__delete')
 				del.classList.add('disabled')
+				del.setAttribute('tabindex', '-1')
 			}
 		})
 
@@ -180,6 +173,7 @@ if (vars.bodyEl.querySelector('.step')) {
 				items.forEach(e => {
 					const del = e.querySelector('.step-item__delete')
 					del.classList.remove('disabled')
+					del.removeAttribute('tabindex', '-1')
 				})
 			}
 
@@ -221,5 +215,5 @@ if (vars.bodyEl.querySelector('.step')) {
 			`;
 			stepList.append(stepItem)
 		})
-	})();
-}
+	}
+})();
