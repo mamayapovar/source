@@ -1,9 +1,6 @@
-import vars from "../_vars";
-
 (function(){
-	const infoAvatar = vars.bodyEl.querySelector('.info-avatar--change')
-
-	if (infoAvatar) {
+	if (document.querySelector('.info-avatar--change')) {
+		const infoAvatar = document.querySelector('.info-avatar--change')
 		const image = infoAvatar.querySelector('.info-avatar__input')
 		const input = infoAvatar.querySelector('input[type="file"]')
 		let uploadedImage = ""

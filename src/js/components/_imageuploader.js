@@ -1,5 +1,6 @@
-if (document.querySelector('.imageuploader')) {
-	(function(){
+(function(){
+	if (document.querySelector('.imageuploader')) {
+		let uploadedImage = ""
 		document.addEventListener('click', (e) => {
 			const target = e.target
 			if (target.classList.contains('imageuploader__input')) {
@@ -7,7 +8,6 @@ if (document.querySelector('.imageuploader')) {
 				const input = image.querySelector('input[type="file"]')
 				const placeholder = image.querySelector('.imageuploader__placeholder')
 				const delBtn = target.parentNode.querySelector('.imageuploader__btn')
-				let uploadedImage = ""
 
 				input.addEventListener('change', () => {
 					if (!input.value == "") {
@@ -39,5 +39,5 @@ if (document.querySelector('.imageuploader')) {
 				delBtn.classList.add('hidden')
 			}
 		})
-	})();
-}
+	}
+})();

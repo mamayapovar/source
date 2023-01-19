@@ -1,57 +1,66 @@
-if (document.querySelector('.counter__input')) {
-	(function(){
+(function(){
+	if (document.querySelector('.counter__input')) {
 		const counterInput = document.querySelector('.counter__input')
 		const counterPlus = document.querySelector('.counter__btn--plus')
 		const counterMinus = document.querySelector('.counter__btn--minus')
 		const counterMax = 20
 
-		counterInput.addEventListener('change', () => {
+		function enableButton(btn) {
+			btn.classList.remove('disabled')
+			btn.removeAttribute('tabindex')
+		}
+
+		function disableButton(btn) {
+			btn.classList.add('disabled')
+			btn.setAttribute('tabindex', '-1')
+		}
+
+		function plusValidate() {
 			if (counterInput.value > counterMax - 1) {
 				counterInput.value = counterMax
-				counterPlus.classList.add('disabled')
+				disableButton(counterPlus)
 			} else {
-				counterPlus.classList.remove('disabled')
+				enableButton(counterPlus)
 			}
+		}
 
+		function minusValidate() {
 			if (counterInput.value <= 1) {
 				counterInput.value = 1
-				counterMinus.classList.add('disabled')
+				disableButton(counterMinus)
 			} else {
-				counterMinus.classList.remove('disabled')
+				enableButton(counterMinus)
 			}
+		}
+
+		document.addEventListener('DOMContentLoaded', () => {
+			plusValidate()
+			minusValidate()
+		})
+
+		counterInput.addEventListener('change', () => {
+			plusValidate()
+			minusValidate()
 		})
 
 		counterPlus.addEventListener('click', (e) => {
 			e.preventDefault()
-
 			let currentValue = parseInt(counterInput.value)
+
 			currentValue++
 			counterInput.value = currentValue
-			counterMinus.classList.remove('disabled')
-
-			if (counterInput.value > counterMax - 1) {
-				counterInput.value = counterMax
-				counterPlus.classList.add('disabled')
-			} else {
-				counterPlus.classList.remove('disabled')
-			}
+			enableButton(counterMinus)
+			plusValidate()
 		})
 
 		counterMinus.addEventListener('click', (e) => {
 			e.preventDefault()
-
 			let currentValue = parseInt(counterInput.value)
+
 			currentValue--
 			counterInput.value = currentValue
-
-			counterPlus.classList.remove('disabled')
-
-			if (counterInput.value <= 1) {
-				counterInput.value = 1
-				counterMinus.classList.add('disabled')
-			} else {
-				counterMinus.classList.remove('disabled')
-			}
+			enableButton(counterPlus)
+			minusValidate()
 		})
-	})();
-}
+	}
+})();

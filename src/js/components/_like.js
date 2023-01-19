@@ -1,10 +1,6 @@
-import vars from "../_vars";
-
 (function(){
-  const buttonLike = document.querySelector('[data-button-like]');
-
-  if (buttonLike) {
-		vars.bodyEl.addEventListener('click', (e) => {
+  if (document.querySelector('[data-button-like]')) {
+		document.addEventListener('click', (e) => {
 			const target = e.target
 
 			if (target.classList.contains('content-footer__btn--like')) {

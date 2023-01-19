@@ -4,7 +4,6 @@
 			const imageuploader = document.querySelectorAll('.imageuploader')
 
 			imageuploader.forEach(uploader => {
-				console.log(uploader.getAttribute('data-image-url'));
 				(async function() {
 					if (uploader.getAttribute('data-image-url') != '' && uploader.getAttribute('data-image-url') != null) {
 						const url = uploader.getAttribute('data-image-url')
