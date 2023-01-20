@@ -32,7 +32,7 @@
 			ingredientAmounts.forEach((input) => {
 				const max = 999
 
-				input.addEventListener('blur', () => {
+				input.addEventListener('change', () => {
 					if (input.value > max - 1) {
 						input.value = max
 					} else if (input.value <= 0.1) {
@@ -87,10 +87,10 @@
 			ingredientItem.classList.add('ingredient-item')
 			ingredientItem.setAttribute('id', `ingredient-${fieldIndex}`)
 			ingredientItem.innerHTML += `
-				<input type="text" name="ingredient-name-${fieldIndex}" class="input  ingredient-item__input  ingredient-item__input--name" placeholder="Название ингредиента" autocomplete="off" required>
-				<input type="number" name="ingredient-amount-${fieldIndex}" class="input  ingredient-item__input  ingredient-item__input--amount" value="1" min="0.1" max="999" step="0.1" autocomplete="off" required>
+				<input type="text" name="ingredient-name-${fieldIndex}" class="input  ingredient-item__input  ingredient-item__input--name" placeholder="Название ингредиента" autocomplete="off">
+				<input type="number" name="ingredient-amount-${fieldIndex}" class="input  ingredient-item__input  ingredient-item__input--amount" value="1" min="0.1" max="999" step="0.1" autocomplete="off">
 				<div class="select  ingredient-item__select">
-					<select name="ingredient-measure-${fieldIndex}" aria-label="Единица измерения" required>
+					<select name="ingredient-measure-${fieldIndex}" aria-label="Единица измерения">
 						<option value="">Ед. измерения</option>
 						<option>шт</option>
 						<option>г</option>
@@ -204,7 +204,7 @@
 							</svg>
 						</button>
 					</div>
-					<textarea name="step-description-${fieldIndex}" id="step-description-${fieldIndex}" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off" maxlength="5000" required></textarea>
+					<textarea name="step-description-${fieldIndex}" id="step-description-${fieldIndex}" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off" maxlength="5000"></textarea>
 					<label class="form-field__error  hidden" for="step-description-${fieldIndex}">
 						<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 							<use href="${svgCircleCross}"/>

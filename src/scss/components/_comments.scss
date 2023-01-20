@@ -8,7 +8,6 @@
   }
 
   &__form {
-    position: relative;
     display: flex;
   }
 
@@ -29,6 +28,15 @@
     display: grid;
     margin-top: 40px;
     gap: 32px;
+  }
+}
+
+.comments-field {
+  width: 100%;
+
+  &__inner {
+    position: relative;
+    display: flex;
   }
 }
 

@@ -101,17 +101,15 @@
 					<form id="settings-email-form" action="https://echo.htmlacademy.ru" method="POST" class="settings__form  settings__form--email">
 						<fieldset class="form-section  settings-section">
 							<legend class="section-h2  form-section__title">Электронная почта</legend>
-							<div class="settings-section__group   settings-section__group--row">
-								<div class="form-field  settings-section__field">
-									<input type="email" name="email" id="settings-email" class="input" placeholder="Электронная почта" value="12345@mail.ru" required>
-									<label class="form-field__error  hidden" for="settings-email">
-										<svg class="icon  icon--16" aria-hidden="true" focusable="false">
-											<use href="img/sprite.svg#circle-cross"/>
-										</svg>
-										<span class="form-field__text">Здесь будет текст ошибки</span>
-									</label>
-								</div>
+							<div class="form-field  settings-section__field  settings-section__field--email">
+								<input type="email" name="email" id="settings-email" class="input" placeholder="Электронная почта" value="12345@mail.ru">
 								<button type="submit" class="btn  settings-section__btn">Обновить почту</button>
+								<label class="form-field__error  hidden" for="settings-email">
+									<svg class="icon  icon--16" aria-hidden="true" focusable="false">
+										<use href="img/sprite.svg#circle-cross"/>
+									</svg>
+									<span class="form-field__text">Здесь будет текст ошибки</span>
+								</label>
 							</div>
 						</fieldset>
 					</form>
@@ -120,7 +118,7 @@
 							<legend class="section-h2  form-section__title">Изменение пароля</legend>
 							<div class="settings-section__group">
 								<div class="form-field  settings-section__field">
-									<input type="password" name="password-old" id="settings-password-old" class="input" placeholder="Старый пароль" required>
+									<input type="password" name="password-old" id="settings-password-old" class="input" placeholder="Старый пароль">
 									<label class="form-field__error  hidden" for="settings-password-old">
 										<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 											<use href="img/sprite.svg#circle-cross"/>
@@ -129,7 +127,7 @@
 									</label>
 								</div>
 								<div class="form-field  settings-section__field">
-									<input type="password" name="password-new" id="settings-password-new" class="input" placeholder="Новый пароль" minlength="4" required>
+									<input type="password" name="password-new" id="settings-password-new" class="input" placeholder="Новый пароль">
 									<label class="form-field__error  hidden" for="settings-password-new">
 										<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 											<use href="img/sprite.svg#circle-cross"/>
@@ -138,7 +136,7 @@
 									</label>
 								</div>
 								<div class="form-field  settings-section__field">
-									<input type="password" name="password-new-repeat" id="settings-password-new-repeat" class="input" placeholder="Подтвердите новый пароль" required>
+									<input type="password" name="password-new-repeat" id="settings-password-new-repeat" class="input" placeholder="Подтвердите новый пароль">
 									<label class="form-field__error  hidden" for="settings-password-new-repeat">
 										<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 											<use href="img/sprite.svg#circle-cross"/>

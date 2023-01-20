@@ -12,7 +12,7 @@
 		const maxMinutes = 59
 		const maxHours = 12
 
-		inputMinutes.addEventListener('blur', () => {
+		inputMinutes.addEventListener('change', () => {
 			if (inputMinutes.value >= maxMinutes) {
 				inputMinutes.value = maxMinutes
 			} else if (inputMinutes.value <= 0) {
@@ -21,18 +21,11 @@
 			inputMinutes.value = getMeNumber(inputMinutes.value)
 		})
 
-		inputHours.addEventListener('blur', () => {
+		inputHours.addEventListener('change', () => {
 			if (inputHours.value >= maxHours) {
 				inputHours.value = maxHours
-				inputMinutes.removeAttribute('required')
-				inputMinutes.setAttribute('min', '')
-			} else if (inputHours.value >= 1) {
-				inputMinutes.removeAttribute('required')
-				inputMinutes.setAttribute('min', '0')
 			} else if (inputHours.value <= 0) {
 				inputHours.value = 0
-				inputMinutes.setAttribute('required', '')
-				inputMinutes.setAttribute('min', '1')
 			}
 			if (inputMinutes.value <= 0) {
 				inputMinutes.value = 0

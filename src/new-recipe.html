@@ -108,7 +108,7 @@
 							<legend class="section-h2  form-section__title">Основное</legend>
 							<div class="form-field  new-recipe-section__field  new-recipe-section__field--title">
 								<label class="form-field__label" for="title">Название рецепта</label>
-								<input type="text" name="title" id="title" class="input" placeholder="Шарлотка с яблоками" autofocus autocomplete="off" maxlength="100" required>
+								<input type="text" name="title" id="title" class="input" placeholder="Шарлотка с яблоками" autofocus autocomplete="off">
 								<label class="form-field__error  hidden" for="title">
 									<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 										<use href="img/sprite.svg#circle-cross"/>
@@ -118,7 +118,7 @@
 							</div>
 							<div class="form-field  new-recipe-section__field  new-recipe-section__field--desc">
 								<label class="form-field__label" for="description">Описание рецепта</label>
-								<textarea name="description" id="description" class="input  input--textarea" placeholder="Старый, испытанный временем, но всегда желанный рецепт классической ароматной шарлотки. Уютный запах корицы и чашечка горячего чая с мелиссой..." autocomplete="off" maxlength="200"></textarea>
+								<textarea name="description" id="description" class="input  input--textarea" placeholder="Старый, испытанный временем, но всегда желанный рецепт классической ароматной шарлотки. Уютный запах корицы и чашечка горячего чая с мелиссой..." autocomplete="off"></textarea>
 								<label class="form-field__error  hidden" for="description">
 									<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 										<use href="img/sprite.svg#circle-cross"/>
@@ -129,7 +129,7 @@
 							<div class="form-field  new-recipe-section__field  new-recipe-section__field--cat">
 								<label class="form-field__label">Категория блюда</label>
 								<div class="select">
-									<select name="cat" required>
+									<select name="cat">
 										<option value="">——</option>
 										<option>Выпечка</option>
 										<option>Супы</option>
@@ -156,7 +156,7 @@
 												<use href="img/sprite.svg#minus" />
 											</svg>
 										</button>
-										<input type="number" name="persons" id="persons" value="1" class="input  counter__input" autocomplete="off" required>
+										<input type="number" name="persons" id="persons" value="1" class="input  counter__input" autocomplete="off">
 										<button type="button" class="btn  counter__btn  counter__btn--plus" aria-label="Добавить порцию">
 											<svg class="icon" aria-hidden="true" focusable="false">
 												<use href="img/sprite.svg#plus" />
@@ -176,7 +176,7 @@
 										<input type="number" name="cooking_time_hours" id="hours" placeholder="0" class="input" autocomplete="off">
 									</div>
 									<div class="form-field  new-recipe-section__field  new-recipe-section__field--minutes">
-										<input type="number" name="cooking_time_minutes" id="minutes" placeholder="0" class="input" min="1" autocomplete="off" required>
+										<input type="number" name="cooking_time_minutes" id="minutes" placeholder="0" class="input" autocomplete="off">
 									</div>
 									<label class="form-field__error  hidden" for="minutes">
 										<svg class="icon  icon--16" aria-hidden="true" focusable="false">
@@ -191,10 +191,10 @@
 							<legend class="section-h2  form-section__title">Ингредиенты</legend>
 							<div class="ingredient__list">
 								<div class="ingredient-item" id="ingredient-901237836">
-									<input type="text" name="ingredient-name-901237836" class="input  ingredient-item__input  ingredient-item__input--name" placeholder="Название ингредиента" autocomplete="off" required>
-									<input type="number" name="ingredient-amount-901237836" class="input  ingredient-item__input  ingredient-item__input--amount" placeholder="0" value="1" min="0.1" max="999" step="0.1" autocomplete="off" required>
+									<input type="text" name="ingredient-name-901237836" class="input  ingredient-item__input  ingredient-item__input--name" placeholder="Название ингредиента" autocomplete="off">
+									<input type="number" name="ingredient-amount-901237836" class="input  ingredient-item__input  ingredient-item__input--amount" value="1" step="0.1" autocomplete="off">
 									<div class="select  ingredient-item__select">
-										<select name="ingredient-measure-901237836" aria-label="Единица измерения" required>
+										<select name="ingredient-measure-901237836" aria-label="Единица измерения">
 											<option value="">Ед. измерения</option>
 											<option>шт</option>
 											<option>г</option>
@@ -224,10 +224,10 @@
 									</label>
 								</div>
 								<div class="ingredient-item" id="ingredient-4771836458">
-									<input type="text" name="ingredient-name-4771836458" class="input  ingredient-item__input  ingredient-item__input--name" placeholder="Название ингредиента" autocomplete="off" required>
-									<input type="number" name="ingredient-amount-4771836458" class="input  ingredient-item__input  ingredient-item__input--amount" placeholder="0" value="1" min="0.1" max="999" step="0.1" autocomplete="off" required>
+									<input type="text" name="ingredient-name-4771836458" class="input  ingredient-item__input  ingredient-item__input--name" placeholder="Название ингредиента" autocomplete="off">
+									<input type="number" name="ingredient-amount-4771836458" class="input  ingredient-item__input  ingredient-item__input--amount" value="1" step="0.1" autocomplete="off">
 									<div class="select  ingredient-item__select">
-										<select name="ingredient-measure-4771836458" aria-label="Единица измерения" required>
+										<select name="ingredient-measure-4771836458" aria-label="Единица измерения">
 											<option value="">Ед. измерения</option>
 											<option>шт</option>
 											<option>г</option>
@@ -268,7 +268,7 @@
 							<legend class="section-h2  form-section__title">Фото блюда</legend>
 							<div class="imageuploader">
 								<label class="input  input--photo  imageuploader__input">
-									<input type="file" name="photo" accept=".jpg, .jpeg, .png" required>
+									<input type="file" name="photo" id="photo" accept=".jpg, .jpeg, .png">
 									<div class="imageuploader__placeholder">
 										<svg class="icon" aria-hidden="true" focusable="false">
 											<use href="img/sprite.svg#image"/>
@@ -281,7 +281,7 @@
 										<use href="img/sprite.svg#delete" />
 									</svg>
 								</button>
-								<label class="form-field__error  hidden">
+								<label class="form-field__error  hidden" for="photo">
 									<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 										<use href="img/sprite.svg#circle-cross"/>
 									</svg>
@@ -316,7 +316,7 @@
 												</svg>
 											</button>
 										</div>
-										<textarea name="step-description-5329123723" id="step-description-5329123723" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off" maxlength="5000" required></textarea>
+										<textarea name="step-description-5329123723" id="step-description-5329123723" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off"></textarea>
 										<label class="form-field__error  hidden" for="step-description-5329123723">
 											<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 												<use href="img/sprite.svg#circle-cross"/>
@@ -349,7 +349,7 @@
 												</svg>
 											</button>
 										</div>
-										<textarea name="step-description-82391238" id="step-description-82391238" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off" maxlength="5000" required></textarea>
+										<textarea name="step-description-82391238" id="step-description-82391238" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off"></textarea>
 										<label class="form-field__error  hidden" for="step-description-82391238">
 											<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 												<use href="img/sprite.svg#circle-cross"/>

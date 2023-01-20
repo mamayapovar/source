@@ -64,4 +64,8 @@
       }
     }
   }
+
+  .form-field__error {
+    grid-column: 1 / 5;
+  }
 }

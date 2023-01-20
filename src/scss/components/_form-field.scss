@@ -9,15 +9,14 @@
   }
 
   &__error {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 16px 1fr;
     font-size: var(--font-xs);
     line-height: var(--lh-xs);
     color: var(--color-text-error);
+    gap: 8px;
 
     .icon {
-      margin-right: 8px;
-      margin-bottom: 2px;
       fill: var(--color-text-error);
     }
 

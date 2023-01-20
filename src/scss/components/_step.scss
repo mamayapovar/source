@@ -69,4 +69,8 @@
   &__input {
     height: 100%;
   }
+
+  .form-field__error {
+    grid-column: 1 / 3;
+  }
 }
