@@ -1,0 +1,61 @@
+<div class="info  info--avatar  user__info">
+	<div class="info__inner">
+		@if (context.type == 'self') {
+			<div class="info-avatar  info-avatar--change">
+				<label style="background-image: url('img/placeholder-avatar.jpg');" class="input  input--photo  info-avatar__input" title="Изменить фото профиля">
+					<input type="file" name="photo" accept=".jpg, .jpeg, .png">
+					<div class="info-avatar__placeholder">
+						<svg class="icon" aria-hidden="true" focusable="false">
+							<use href="img/sprite.svg#image"/>
+						</svg>
+					</div>
+				</label>
+			</div>
+		}
+		@if (context.type != 'self') {
+			<img src="img/placeholder-avatar.jpg" class="info-avatar" width="120" height="120" alt="Фото профиля">
+		}
+		<h1 class="section-h1  info__name">Екатерина Георгадзе</h1>
+		<p class="info__desc">Готовлю самые вкусные и пышные оладушки</p>
+		@if (context.type == 'self') {
+			<a href="settings-profile.html" class="section-link  info__link">Изменить описание</a>
+		}
+	</div>
+	<div class="info-stats  info__stats">
+		<dl class="info-stats__item">
+			<dt class="info-stats__name">Подписчиков</dt>
+			<dd class="info-stats__amount">32</dd>
+		</dl>
+		<dl class="info-stats__item">
+			<dt class="info-stats__name">Постов</dt>
+			<dd class="info-stats__amount">3</dd>
+		</dl>
+		<dl class="info-stats__item">
+			<dt class="info-stats__name">Лайков</dt>
+			<dd class="info-stats__amount">5341</dd>
+		</dl>
+	</div>
+	@if (context.type == 'guest') {
+		<button class="btn  btn--second  btn--small  btn--left  btn--subscribe  info__btn" aria-label="Оформить подписку" data-graph-path="register" data-graph-speed="100">
+			<span data-text-subscribe>Подписаться</span>
+			<svg class="icon" aria-hidden="true" focusable="false">
+				<use href="img/sprite.svg#user-plus"/>
+			</svg>
+		</button>
+	}
+	@if (context.type == 'auth') {
+		<button class="btn  btn--second  btn--small  btn--left  btn--subscribe  info__btn" aria-label="Оформить подписку" data-button-subscribe>
+			<span data-text-subscribe>Подписаться</span>
+			<svg class="icon" aria-hidden="true" focusable="false">
+				<use href="img/sprite.svg#user-plus"/>
+			</svg>
+		</button>
+	}
+	@if (context.type == 'self') {
+		<a href="settings-profile.html" class="btn  btn--second  btn--icon  btn--small info__btn" aria-label="Перейти в настройки">
+			<svg class="icon" aria-hidden="true" focusable="false">
+				<use href="img/sprite.svg#settings"/>
+			</svg>
+		</a>
+	}
+</div>

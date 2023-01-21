@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru" class="page">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="theme-color" content="#111111">
-    <title>Мама, я повар! — платформа для кулинаров</title>
-    <link rel="preload" href="fonts/NunitoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/NunitoSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/NunitoSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script defer src="js/main.js"></script>
-  </head>
+	@include('partials/head.html', {
+		'title': 'Мама, я повар! — платформа для кулинаров'
+	})
 
   <body class="page__body">
-    @include('partials/header.html')
+		@include('partials/header.html', {
+			'type': 'guest'
+		})
 
     <div class="container">
       <div class="site-container">
@@ -77,9 +68,15 @@
         <main class="index">
           <h1 class="visually-hidden">Свежие рецепты</h1>
 					<div class="feed">
-						@include('partials/feed-item.html')
-						@include('partials/feed-item.html')
-						@include('partials/feed-item.html')
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						})
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						})
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						})
 					</div>
         </main>
       </div>

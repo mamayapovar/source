@@ -37,7 +37,7 @@ figure {
     position: relative;
     display: grid;
     grid-template-columns: 300px 1fr;
-    padding-top: 56px;
+    padding-top: calc(90px + 56px);
     padding-bottom: 48px;
     gap: 30px;
   }

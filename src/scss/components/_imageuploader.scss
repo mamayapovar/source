@@ -7,6 +7,14 @@
 
   &__input {
     @include bg-cover;
+
+    &:focus-within {
+      border-color: var(--color-fields-border-focused);
+
+      &:hover {
+        border-color: var(--color-fields-border-focused);
+      }
+    }
   }
 
   &__placeholder {
