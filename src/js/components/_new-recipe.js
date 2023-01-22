@@ -88,7 +88,7 @@
 			ingredientItem.setAttribute('id', `ingredient-${fieldIndex}`)
 			ingredientItem.innerHTML += `
 				<input type="text" name="ingredient-name-${fieldIndex}" class="input  ingredient-item__input  ingredient-item__input--name" placeholder="Название ингредиента" autocomplete="off">
-				<input type="number" name="ingredient-amount-${fieldIndex}" class="input  ingredient-item__input  ingredient-item__input--amount" value="1" min="0.1" max="999" step="0.1" autocomplete="off">
+				<input type="number" name="ingredient-amount-${fieldIndex}" class="input  ingredient-item__input  ingredient-item__input--amount" value="1" step="0.1" autocomplete="off">
 				<div class="select  ingredient-item__select">
 					<select name="ingredient-measure-${fieldIndex}" aria-label="Единица измерения">
 						<option value="">Ед. измерения</option>
@@ -204,7 +204,7 @@
 							</svg>
 						</button>
 					</div>
-					<textarea name="step-description-${fieldIndex}" id="step-description-${fieldIndex}" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off" maxlength="5000"></textarea>
+					<textarea name="step-description-${fieldIndex}" id="step-description-${fieldIndex}" class="input  input--textarea  step-item__input" placeholder="Замешиваем тесто для блинов. В 1 литр теплого молока добавляем 4 яйца..." autocomplete="off"></textarea>
 					<label class="form-field__error  hidden" for="step-description-${fieldIndex}">
 						<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 							<use href="${svgCircleCross}"/>
