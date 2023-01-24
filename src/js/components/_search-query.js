@@ -11,7 +11,6 @@
 
 		function searchMenuOpen() {
 			searchMenu.classList.add('active');
-			searchQuery.setAttribute('aria-expanded', 'true');
 			searchQueryChange()
 
 			window.addEventListener('click', watchClickOutside);
@@ -20,7 +19,6 @@
 
 		function searchMenuClose() {
 			searchMenu.classList.remove('active');
-			searchQuery.setAttribute('aria-expanded', 'false');
 			searchQuery.blur();
 			updateSearchOption(-1);
 
