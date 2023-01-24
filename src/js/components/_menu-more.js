@@ -1,26 +1,40 @@
 (function(){
-	function menuMorePreInit(menuMoreWrapper) {
-		const menuMoreToggle = menuMoreWrapper.querySelector('[data-menu-more-toggle]');
-		const menuMoreList = menuMoreWrapper.querySelector('[data-menu-more-list]');
-		const menuMoreItem = menuMoreList.querySelectorAll('[data-menu-more-item]');
+	if (document.querySelector('[data-menu-more-list]')) {
+		function menuMorePreInit(menuMoreWrapper) {
+			const menuMoreToggle = menuMoreWrapper.querySelector('[data-menu-more-toggle]');
+			const menuMoreList = menuMoreWrapper.querySelector('[data-menu-more-list]');
+			const menuMoreItem = menuMoreList.querySelectorAll('[data-menu-more-item]');
 
-		let optionsList = Array.from(menuMoreList.children)
-		let optionsCount = optionsList.length;
-		let optionHoveredIndex = -1;
+			let optionsList = Array.from(menuMoreList.children)
+			let optionsCount = optionsList.length;
+			let optionHoveredIndex = -1;
 
-		function openMenu() {
-			menuMoreToggle.classList.toggle('active')
-			menuMoreList.classList.toggle('active')
+			function openMenu() {
+				menuMoreToggle.classList.toggle('active')
+				menuMoreList.classList.toggle('active')
 
-			if (menuMoreList.classList.contains('active')) {
-				menuMoreToggle.setAttribute('aria-expanded', 'true');
-				menuMoreToggle.setAttribute('aria-label', 'Закрыть меню действий');
-				updateOption(optionHoveredIndex);
+				if (menuMoreList.classList.contains('active')) {
+					menuMoreToggle.setAttribute('aria-expanded', 'true');
+					menuMoreToggle.setAttribute('aria-label', 'Закрыть меню действий');
+					updateOption(optionHoveredIndex);
 
-				// добавляем прослушки действий
-				document.addEventListener('click', watchClickOutside)
-				document.addEventListener('keydown', supportKeyboardNavigation)
-			} else {
+					// добавляем прослушки действий
+					document.addEventListener('click', watchClickOutside)
+					document.addEventListener('keydown', supportKeyboardNavigation)
+				} else {
+					menuMoreToggle.setAttribute('aria-expanded', 'false');
+					menuMoreToggle.setAttribute('aria-label', 'Открыть меню действий');
+					updateOption(-1);
+
+					// удаляем прослушки действий
+					document.removeEventListener('click', watchClickOutside)
+					document.removeEventListener('keydown', supportKeyboardNavigation)
+				}
+			}
+
+			function closeMenu() {
+				menuMoreToggle.classList.remove('active')
+				menuMoreList.classList.remove('active')
 				menuMoreToggle.setAttribute('aria-expanded', 'false');
 				menuMoreToggle.setAttribute('aria-label', 'Открыть меню действий');
 				updateOption(-1);
@@ -29,92 +43,93 @@
 				document.removeEventListener('click', watchClickOutside)
 				document.removeEventListener('keydown', supportKeyboardNavigation)
 			}
-		}
 
-		function closeMenu() {
-			menuMoreToggle.classList.remove('active')
-			menuMoreList.classList.remove('active')
-			menuMoreToggle.setAttribute('aria-expanded', 'false');
-			menuMoreToggle.setAttribute('aria-label', 'Открыть меню действий');
-			updateOption(-1);
+			function updateOption(newIndex) {
+				optionsList = Array.from(menuMoreList.children)
+				optionsCount = optionsList.length - 1
+				const prevOption = menuMoreList.children[optionHoveredIndex];
+				const option = menuMoreList.children[newIndex];
 
-			// удаляем прослушки действий
-			document.removeEventListener('click', watchClickOutside)
-			document.removeEventListener('keydown', supportKeyboardNavigation)
-		}
+				if (prevOption) {
+					prevOption.classList.remove("focused");
+				}
 
-		function updateOption(newIndex) {
-			optionsList = Array.from(menuMoreList.children)
-			optionsCount = optionsList.length - 1
-			const prevOption = menuMoreList.children[optionHoveredIndex];
-			const option = menuMoreList.children[newIndex];
+				if (option) {
+					option.classList.add("focused");
+				}
 
-			if (prevOption) {
-				prevOption.classList.remove("focused");
+				if (option != optionsList[optionsCount]) {
+					optionsList[optionsCount].classList.remove('focused')
+				}
+
+				optionHoveredIndex = newIndex;
 			}
 
-			if (option) {
-				option.classList.add("focused");
+			function watchClickOutside(e) {
+				const target = e.target
+				if (target !== menuMoreToggle && target !== menuMoreList) {
+					closeMenu()
+				}
 			}
 
-			if (option != optionsList[optionsCount]) {
-				optionsList[optionsCount].classList.remove('focused')
+			function supportKeyboardNavigation(e) {
+				if (e.key === "ArrowDown" && menuMoreList.classList.contains('active') && optionHoveredIndex < optionsCount) {
+					e.preventDefault();
+					updateOption(optionHoveredIndex + 1);
+				} else if (e.key === "ArrowDown" && menuMoreList.classList.contains('active') && optionHoveredIndex >= optionsCount) {
+					e.preventDefault();
+					updateOption(0);
+				}
+
+				if (e.key === "ArrowUp" && menuMoreList.classList.contains('active') && optionHoveredIndex > 0) {
+					e.preventDefault();
+					updateOption(optionHoveredIndex - 1);
+				} else if (e.key === "ArrowUp" && menuMoreList.classList.contains('active') && optionHoveredIndex <= 0) {
+					e.preventDefault();
+					updateOption(optionsCount);
+				}
+
+				if (e.key === "Enter" && menuMoreList.classList.contains('active')) {
+          if (menuMoreList.children[optionHoveredIndex]) {
+            e.preventDefault();
+            const option = menuMoreList.children[optionHoveredIndex];
+
+            if (option.querySelector('a')) {
+              const link = option.querySelector('a');
+              const href = link.getAttribute('href');
+              document.location = href;
+            } else if (option.querySelector('button')) {
+              const btn = option.querySelector('button');
+              const href = btn.getAttribute('data-url_root');
+              document.location = href;
+            }
+            closeMenu();
+          }
+				}
+
+				if (e.key === "Escape" || e.key === "Tab" && menuMoreList.classList.contains('active')) {
+					closeMenu()
+				}
 			}
 
-			optionHoveredIndex = newIndex;
-		}
-
-		function watchClickOutside(e) {
-			const target = e.target
-			if (target !== menuMoreToggle && target !== menuMoreList) {
-				closeMenu()
-			}
-		}
-
-		function supportKeyboardNavigation(e) {
-			if (e.key === "ArrowDown" && menuMoreList.classList.contains('active') && optionHoveredIndex < optionsCount) {
-				e.preventDefault();
-				updateOption(optionHoveredIndex + 1);
-			} else if (e.key === "ArrowDown" && menuMoreList.classList.contains('active') && optionHoveredIndex >= optionsCount) {
-				e.preventDefault();
-				updateOption(0);
-			}
-
-			if (e.key === "ArrowUp" && menuMoreList.classList.contains('active') && optionHoveredIndex > 0) {
-				e.preventDefault();
-				updateOption(optionHoveredIndex - 1);
-			} else if (e.key === "ArrowUp" && menuMoreList.classList.contains('active') && optionHoveredIndex <= 0) {
-				e.preventDefault();
-				updateOption(optionsCount);
-			}
-
-			if (e.key === "Enter" && menuMoreList.classList.contains('active')) {
-				e.preventDefault();
-				closeMenu()
-			}
-
-			if (e.key === "Escape" || e.key === "Tab" && menuMoreList.classList.contains('active')) {
-				closeMenu()
-			}
-		}
-
-		menuMoreToggle.addEventListener('click', () => {
-			openMenu()
-		})
-
-		menuMoreItem.forEach(item => {
-			item.addEventListener('click', () => {
-				closeMenu()
+			menuMoreToggle.addEventListener('click', () => {
+				openMenu()
 			})
-		})
-	}
 
-	function menuMoreInit() {
-		const allMenuMoreInPage = document.querySelectorAll('[data-menu-more]');
-		allMenuMoreInPage.forEach(menuMoreWrapper => {
-			menuMorePreInit(menuMoreWrapper);
-		})
-	}
+			menuMoreItem.forEach(item => {
+				item.addEventListener('click', () => {
+					closeMenu()
+				})
+			})
+		}
 
-	menuMoreInit()
+		function menuMoreInit() {
+			const allMenuMoreInPage = document.querySelectorAll('[data-menu-more]');
+			allMenuMoreInPage.forEach(menuMoreWrapper => {
+				menuMorePreInit(menuMoreWrapper);
+			})
+		}
+
+		menuMoreInit()
+	}
 })();

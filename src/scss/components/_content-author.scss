@@ -24,6 +24,10 @@
     height: 56px;
     transition: opacity 0.2s ease;
 
+    img {
+      height: 100%;
+    }
+
     &:hover,
     &.focus-visible {
       opacity: 0.8;

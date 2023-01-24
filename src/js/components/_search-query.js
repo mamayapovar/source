@@ -73,7 +73,7 @@
 			searchAllBtn.innerHTML = `
 				<button type="submit" form="search-form" class="btn-reset  search-query-menu__link" tabindex="-1">
 					<svg class="icon" aria-hidden="true" focusable="false">
-						<use href="img/sprite.svg#arrow-down-left"/>
+						<use href="${svgArrowDownLeft}"/>
 					</svg>
 					<span>Перейти к запросам</span>
 				</button>
@@ -132,15 +132,17 @@
 
 			// переход по ссылке в списке результатов
 			if (e.key === "Enter" && searchMenu.classList.contains('active')) {
-				const option = searchList.children[optionHoveredIndex];
+        if (searchList.children[optionHoveredIndex]) {
+          const option = searchList.children[optionHoveredIndex];
 
-				if (option.hasAttribute('data-search-link')) {
-					e.preventDefault();
-					const link = option.querySelector('a')
-					const href = link.getAttribute('href')
-					document.location = href
-					searchMenuClose()
-				}
+          if (option.hasAttribute('data-search-link')) {
+            e.preventDefault();
+            const link = option.querySelector('a');
+            const href = link.getAttribute('href');
+            document.location = href;
+            searchMenuClose();
+          }
+        }
 			}
 
 			// очистка списка результатов

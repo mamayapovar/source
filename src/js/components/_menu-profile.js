@@ -89,17 +89,14 @@
 			}
 
 			if (e.key === "Enter" && menuProfile.classList.contains('active')) {
-				e.preventDefault();
-				const option = menuProfile.children[optionHoveredIndex];
-				const optionLink = option && option.hasAttribute('data-menu-profile-link')
-
-				if (optionLink) {
-					const link = option.querySelector('a')
-					const href = link.getAttribute('href')
-					document.location = href
-				}
-
-				closeMenu()
+        if (menuProfile.children[optionHoveredIndex]) {
+          e.preventDefault();
+          const option = menuProfile.children[optionHoveredIndex];
+          const link = option.querySelector('a');
+          const href = link.getAttribute('href');
+          document.location = href;
+          closeMenu();
+        }
 			}
 
 			if (e.key === "Escape" || e.key === "Tab" && menuProfile.classList.contains('active')) {
