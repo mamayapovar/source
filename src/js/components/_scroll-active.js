@@ -9,7 +9,7 @@ import vars from '../_vars';
 
 			fieldsets.forEach(current => {
 					const fieldsetHeight = current.offsetHeight + 40
-					const fieldsetTop = current.offsetTop - vars.headerHeight - 205;
+					const fieldsetTop = current.offsetTop - 90 - 205; // высота шапки + дополнительный отступ
 					const fieldsetId = current.getAttribute('id')
 					const fieldsetIdLast = fieldsets[fieldsets.length - 1].getAttribute('id')
 					const fieldsetItems = document.querySelectorAll('.sidebar-tree__list li')
