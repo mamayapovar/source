@@ -161,6 +161,16 @@
 			}
 		}
 
+		// вывод запроса после отправки формы
+		document.addEventListener('DOMContentLoaded', () => {
+			if (document.querySelector('.search__info .info__name')) {
+				const query = document.querySelector('.search__info .info__name')
+				searchQuery.value = query.textContent
+				searchClear.setAttribute('tabindex', '0');
+				searchClear.classList.add('active');
+			}
+		});
+
     searchQuery.addEventListener('focus', searchMenuOpen);
 		searchClear.addEventListener('focusin', searchMenuClose)
 
