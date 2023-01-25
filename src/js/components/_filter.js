@@ -130,7 +130,6 @@
 		})
 
 		filterItem.forEach(item => {
-			const form = item.parentNode
 			const btn = item.querySelector('.filter-menu__btn')
 			const toggle = item.parentNode.parentNode.querySelector('[data-filter-toggle]')
 
