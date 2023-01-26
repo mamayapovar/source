@@ -142,11 +142,11 @@
 		searchClear.addEventListener('click', searchMenuClear);
 
 		// проверка на наличие запроса
-		window.addEventListener('keydown', e => {
-			if (e.key === "Enter" && searchQuery.value < 1) {
-				e.preventDefault();
-			}
-		});
+    window.addEventListener('keydown', e => {
+      if (e.key === "Enter" && searchQuery == document.activeElement && searchQuery.value < 1) {
+        e.preventDefault();
+      }
+    });
 
 		const config = {
 			childList: true,
