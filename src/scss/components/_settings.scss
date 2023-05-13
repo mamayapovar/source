@@ -2,6 +2,18 @@
   display: grid;
   align-content: start;
   gap: 40px;
+
+  &__form--delete {
+    .settings-section {
+      display: grid;
+      gap: 12px;
+
+      &__desc {
+        max-width: 590px;
+        margin-bottom: 12px;
+      }
+    }
+  }
 }
 
 .settings-section {
@@ -46,12 +58,6 @@
     justify-content: start;
     grid-auto-flow: column;
     gap: 32px;
-  }
-
-  &__info {
-    display: grid;
-    max-width: 590px;
-    gap: 12px;
   }
 
   &__desc {
