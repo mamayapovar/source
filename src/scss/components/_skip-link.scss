@@ -1,0 +1,27 @@
+.skip-link {
+  position: absolute;
+  left: 0;
+  z-index: 99;
+  padding: 8px;
+  height: 30px;
+  color: var(--color-button-primary-text);
+  background: var(--color-button-primary-bg-default);
+  transform: translateY(-200%);
+  transition: transform 0.3s;
+
+  &:focus {
+    transform: translateY(-100%);
+  }
+
+  &--new-recipe {
+    bottom: 0;
+    opacity: 0;
+    transform: none;
+    transition: opacity 0.3s;
+
+    &:focus {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

@@ -42,8 +42,6 @@
 
     &:hover,
     &.focus-visible {
-      outline: none;
-
       .icon {
         fill: var(--color-text-error);
       }

@@ -61,7 +61,6 @@
 
     &:hover,
     &.focus-visible {
-      outline: none;
       background-color: var(--color-bg-island-hover-inverse);
     }
 
@@ -117,7 +116,6 @@
 
     &.focused {
       .filter-menu__btn {
-        outline: none;
         background-color: var(--color-bg-island-hover-inverse);
       }
     }
@@ -136,7 +134,6 @@
     transition: color 0.2s ease, background-color 0.2s ease;
 
     &:hover {
-      outline: none;
       background-color: var(--color-bg-island-hover-inverse);
     }
 

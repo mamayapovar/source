@@ -40,7 +40,7 @@
 					</div>
 				</aside>
 
-				<main class="settings  settings--profile">
+				<main class="settings  settings--profile" id="skip-link">
 					<h1 class="visually-hidden">Настройки профиля</h1>
 					<form id="settings-profile-form" action="https://echo.htmlacademy.ru" method="POST" class="settings__form  settings__form--profile">
 						<fieldset class="form-section  settings-section">
@@ -69,7 +69,7 @@
 								<div class="form-field  settings-section__field  settings-section__field--avatar">
 									<label class="form-field__label" for="photo">Фото профиля</label>
 									<div class="info-avatar  info-avatar--change">
-										<label style="background-image: url('img/placeholder-avatar.jpg');" class="input  input--photo  info-avatar__input" title="Изменить фото профиля">
+										<label style="background-image: url('img/placeholder-avatar.jpg');" class="input  input--photo  info-avatar__input" aria-label="Изменить фото профиля">
 											<input type="file" name="photo" id="photo" accept=".jpg, .jpeg, .png">
 											<div class="info-avatar__placeholder">
 												<svg class="icon" aria-hidden="true" focusable="false">

@@ -42,6 +42,7 @@
   }
 
   &__left {
+    position: relative;
     grid-template-columns: auto minmax(auto, 400px);
     gap: 32px;
   }
