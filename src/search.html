@@ -71,7 +71,7 @@
 						<div class="info  search__info">
 							<div class="info__inner">
 								<h1 class="section-h1  info__name">вкусняшки от катюши</h1>
-								<p class="info__desc">Найдено 4 результата</p>
+								<p class="info__desc">Отыскал 3 результата</p>
 							</div>
 						</div>
 						<div class="filter  search__filter">
@@ -120,21 +120,21 @@
 					</div>
 					<div class="feed  search__feed">
 						<!-- Если результатов нет -->
-						@include('partials/feed-placeholder.html', {
+						<!-- @include('partials/feed-placeholder.html', {
 							'text': 'Мы все внимательно посмотрели, но ничего не нашли',
 							'hint': 'Попробуйте изменить запрос или посмотрите другие блюда на главной',
 							'btn': 'index'
-						})
-						<!-- Если результаты есть -->
-						<!-- @include('partials/feed-item.html', {
-							'page': 'index'
-						})
-						@include('partials/feed-item.html', {
-							'page': 'index'
-						})
-						@include('partials/feed-item.html', {
-							'page': 'index'
 						}) -->
+						<!-- Если результаты есть -->
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						})
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						})
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						})
 					</div>
         </main>
       </div>
