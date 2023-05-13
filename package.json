@@ -1,19 +1,16 @@
 {
   "name": "myap",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Мама, я повар! — это платформа для обмена рецептами",
   "main": "gulpfile.js",
   "homepage": "https://github.com/mamayapovar/source",
   "scripts": {
     "html": "node-w3c-validator -f lint -evH -i app/**/*.html",
     "dev": "gulp",
-    "build": "gulp build",
     "cache": "gulp cache",
     "backend": "gulp backend",
-    "zip": "gulp zip",
-    "code": "editorconfig-checker",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d app -r https://github.com/mamayapovar/mamayapovar.github.io.git"
+    "release": "gulp release",
+    "deploy": "gulp build && gh-pages -d app -r https://github.com/mamayapovar/mamayapovar.github.io.git"
   },
   "author": "sonniydsgn",
   "license": "ISC",
@@ -44,7 +41,6 @@
     "gulp-svgmin": "^4.1.0",
     "gulp-typograf": "^4.0.3",
     "gulp-webp": "^4.0.1",
-    "gulp-zip": "^5.1.0",
     "node-w3c-validator": "^2.0.1",
     "sass": "^1.45.1",
     "stylelint": "^14.2.0",
@@ -59,7 +55,6 @@
     "gh-pages": "^4.0.0",
     "graph-modal": "^1.0.4",
     "graph-tabs": "^1.0.0",
-    "inputmask": "^5.0.7",
     "smooth-scroll": "^16.1.3"
   }
 }

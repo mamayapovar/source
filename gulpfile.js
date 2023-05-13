@@ -30,29 +30,44 @@ const mainSass = gulpSass(sass);
 const webpackStream = require('webpack-stream');
 const plumber = require('gulp-plumber');
 const path = require('path');
-const zip = require('gulp-zip');
-const rootFolder = path.basename(path.resolve());
 
 // paths
 const srcFolder = './src';
 const buildFolder = './app';
+const backendFolder = '../myap-p/mamayapovar/static/recipes';
+const releaseFolder = '../myap-p/mamayapovar/recipes/static/recipes';
 const paths = {
   srcSvg: `${srcFolder}/img/svg/**.svg`,
   srcImgFolder: `${srcFolder}/img`,
   buildImgFolder: `${buildFolder}/img`,
+	backendImgFolder: `${backendFolder}/img`,
+	releaseImgFolder: `${releaseFolder}/img`,
   srcScss: `${srcFolder}/scss/**/*.scss`,
   buildCssFolder: `${buildFolder}/css`,
+	backendCssFolder: `${backendFolder}/css`,
+	releaseCssFolder: `${releaseFolder}/css`,
   srcFullJs: `${srcFolder}/js/**/*.js`,
   srcMainJs: `${srcFolder}/js/main.js`,
   buildJsFolder: `${buildFolder}/js`,
+	backendJsFolder: `${backendFolder}/js`,
+	releaseJsFolder: `${releaseFolder}/js`,
   srcPartialsFolder: `${srcFolder}/partials`,
   resourcesFolder: `${srcFolder}/resources`,
 };
 
 let isProd = false; // dev by default
+let isBackend = false;
 
 const clean = () => {
   return del([buildFolder])
+}
+
+const cleanBackend = () => {
+  return gulpif(isBackend, del([paths.backendCssFolder, paths.backendImgFolder, `${backendFolder}/fonts`, `${backendFolder}/js/main.js`, `${backendFolder}/favicon.ico`], {force: true}))
+}
+
+const cleanRelease = () => {
+  return gulpif(isProd, del([paths.releaseCssFolder, paths.releaseImgFolder, `${releaseFolder}/fonts`, `${releaseFolder}/js/main.js`, `${releaseFolder}/favicon.ico`], {force: true}))
 }
 
 //svg sprite
@@ -85,7 +100,9 @@ const svgSprites = () => {
         }
       },
     }))
-    .pipe(dest(paths.buildImgFolder));
+    .pipe(dest(paths.buildImgFolder))
+		.pipe(gulpif(isBackend, dest(paths.backendImgFolder)))
+		.pipe(gulpif(isProd, dest(paths.releaseImgFolder)))
 }
 
 // scss styles
@@ -123,8 +140,27 @@ const stylesBackend = () => {
       cascade: false,
       overrideBrowserslist: ["last 5 versions"]
     }))
-    .pipe(dest(paths.buildCssFolder))
-    .pipe(browserSync.stream());
+    .pipe(dest(paths.backendCssFolder))
+};
+
+// styles release
+const stylesRelease = () => {
+  return src(paths.srcScss)
+    .pipe(plumber(
+      notify.onError({
+        title: "SCSS",
+        message: "Error: <%= error.message %>"
+      })
+    ))
+    .pipe(mainSass())
+    .pipe(autoprefixer({
+      cascade: false,
+      overrideBrowserslist: ["last 5 versions"]
+    }))
+    .pipe(cleanCSS({
+      level: 2
+    }))
+    .pipe(dest(paths.releaseCssFolder))
 };
 
 // scripts
@@ -203,13 +239,53 @@ const scriptsBackend = () => {
       console.error('WEBPACK ERROR', err);
       this.emit('end');
     })
-    .pipe(dest(paths.buildJsFolder))
-    .pipe(browserSync.stream());
+    .pipe(dest(paths.backendJsFolder))
+}
+
+// scripts release
+const scriptsRelease = () => {
+  return src(paths.srcMainJs)
+    .pipe(plumber(
+      notify.onError({
+        title: "JS",
+        message: "Error: <%= error.message %>"
+      })
+    ))
+    .pipe(webpackStream({
+      mode: 'production',
+      output: {
+        filename: 'main.js',
+      },
+      module: {
+        rules: [{
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', {
+                  targets: "defaults"
+                }]
+              ]
+            }
+          }
+        }]
+      },
+      devtool: false
+    }))
+    .on('error', function (err) {
+      console.error('WEBPACK ERROR', err);
+      this.emit('end');
+    })
+    .pipe(dest(paths.releaseJsFolder))
 }
 
 const resources = () => {
   return src(`${paths.resourcesFolder}/**`)
     .pipe(dest(buildFolder))
+		.pipe(gulpif(isBackend, dest(backendFolder)))
+		.pipe(gulpif(isProd, dest(releaseFolder)))
 }
 
 const images = () => {
@@ -224,6 +300,8 @@ const images = () => {
       }),
     ])))
     .pipe(dest(paths.buildImgFolder))
+		.pipe(gulpif(isBackend, dest(paths.backendImgFolder)))
+		.pipe(gulpif(isProd, dest(paths.releaseImgFolder)))
 };
 
 const htmlInclude = () => {
@@ -285,20 +363,7 @@ const htmlMinify = () => {
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
-    .pipe(dest(buildFolder));
-}
-
-const zipFiles = (done) => {
-  del.sync([`${buildFolder}/*.zip`]);
-  return src(`${buildFolder}/**/*.*`, {})
-    .pipe(plumber(
-      notify.onError({
-        title: "ZIP",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(zip(`${rootFolder}.zip`))
-    .pipe(dest(buildFolder));
+    .pipe(dest(buildFolder))
 }
 
 const toProd = (done) => {
@@ -306,12 +371,17 @@ const toProd = (done) => {
   done();
 };
 
-exports.default = series(clean, htmlInclude, scripts, styles, resources, images, svgSprites, watchFiles);
+const toBackend = (done) => {
+  isBackend = true;
+  done();
+};
 
-exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, resources, images, svgSprites)
+exports.default = series(clean, htmlInclude, scripts, styles, resources, images, svgSprites, watchFiles);
 
 exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, svgSprites, htmlMinify);
 
-exports.cache = series(cache, rewrite);
+exports.backend = series(toBackend, cleanBackend, scriptsBackend, stylesBackend, resources, images, svgSprites)
 
-exports.zip = zipFiles;
+exports.release = series(toProd, cleanRelease, scriptsRelease, stylesRelease, resources, images, svgSprites);
+
+exports.cache = series(cache, rewrite);
