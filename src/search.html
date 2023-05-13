@@ -118,12 +118,13 @@
 					</div> -->
 					<div class="feed  search__feed">
 						<!-- Если результатов нет -->
-						<!-- <div class="feed-placeholder  search__feed-placeholder">
-							<p class="feed-placeholder__desc">Мы все внимательно посмотрели, но ничего не нашли :(</p>
-							<p class="feed-placeholder__desc">Попробуйте изменить запрос или посмотрите другие блюда на <a href="index.html" class="section-link">главной</a></p>
-						</div> -->
+						@include('partials/feed-placeholder.html', {
+							'text': 'Мы все внимательно посмотрели, но ничего не нашли',
+							'hint': 'Попробуйте изменить запрос или посмотрите другие блюда на главной',
+							'btn': 'index'
+						})
 						<!-- Если результаты есть -->
-						@include('partials/feed-item.html', {
+						<!-- @include('partials/feed-item.html', {
 							'page': 'index'
 						})
 						@include('partials/feed-item.html', {
@@ -131,7 +132,7 @@
 						})
 						@include('partials/feed-item.html', {
 							'page': 'index'
-						})
+						}) -->
 					</div>
         </main>
       </div>

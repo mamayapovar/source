@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 16px;
-  padding: 40px 32px 56px;
-  height: 250px;
+  padding: 96px 32px;
   background-color: var(--color-bg-island);
 
   &__desc {
@@ -14,5 +13,13 @@
     line-height: var(--lh-primary);
     text-align: center;
     color: var(--color-text-primary);
+  }
+
+  &__btn {
+    margin-top: 8px;
+  }
+
+  &--btn {
+    padding: 80px 32px;
   }
 }

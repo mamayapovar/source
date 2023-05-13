@@ -75,6 +75,18 @@
 						</div>
 					</div>
 					<div class="feed  category__feed">
+						<!-- Если рецептов нет и не авторизован -->
+						<!-- @include('partials/feed-placeholder.html', {
+							'text': 'Здесь ещё нет рецептов',
+						}) -->
+
+						<!-- Если рецептов нет -->
+						<!-- @include('partials/feed-placeholder.html', {
+							'text': 'Опубликуйте первый рецепт, чтобы привлечь читаталей',
+							'btn': 'new-recipe'
+						}) -->
+
+						<!-- Если рецепты есть -->
 						@include('partials/feed-item.html', {
 							'page': 'category'
 						})

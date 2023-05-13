@@ -1,0 +1,26 @@
+@if (!context.btn) {
+	<div class="feed-placeholder">
+		<p class="feed-placeholder__desc">@text</p>
+	</div>
+}
+@if (context.btn) {
+	<div class="feed-placeholder  feed-placeholder--btn">
+		<p class="feed-placeholder__desc">@text</p>
+
+		@if (context.hint) {
+			<p class="feed-placeholder__desc">@hint</p>
+		}
+
+		@if (context.btn == 'new-recipe') {
+			@if (context.type == 'guest') {
+				<button class="btn  btn--small  feed-placeholder__btn" data-graph-path="register" data-graph-speed="100" aria-label="Создать новый рецепт">Создать рецепт</button>
+			}
+			@if (context.type != 'guest') {
+				<a href="new-recipe.html" class="btn  btn--small  feed-placeholder__btn">Создать рецепт</a>
+			}
+		}
+		@if (context.btn == 'index') {
+			<a href="index.html" class="btn  btn--second  btn--small  feed-placeholder__btn">Вернуться на главную</a>
+		}
+	</div>
+}

@@ -1,5 +1,8 @@
 .user {
-  display: grid;
-  align-items: start;
-  gap: 48px;
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    margin-bottom: 48px;
+  }
 }

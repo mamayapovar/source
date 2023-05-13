@@ -62,8 +62,23 @@
 
         <main class="bookmark">
           <h1 class="visually-hidden">Закладки</h1>
-					<div class="feed-placeholder  bookmark__feed-placeholder">
-						<p class="feed-placeholder__desc">Вы ничего не добавляли в закладки</p>
+					<div class="feed">
+						<!-- Если рецептов нет -->
+						@include('partials/feed-placeholder.html', {
+							'text': 'Вы ничего не добавляли в закладки',
+							'btn': 'index'
+						})
+
+						<!-- Если рецепты есть -->
+						<!-- @include('partials/feed-item.html', {
+							'page': 'index'
+						})
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						})
+						@include('partials/feed-item.html', {
+							'page': 'index'
+						}) -->
 					</div>
         </main>
       </div>

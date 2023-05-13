@@ -69,6 +69,21 @@
         <main class="index">
           <h1 class="visually-hidden">Свежие рецепты</h1>
 					<div class="feed">
+						<!-- Если рецептов нет и не авторизован -->
+						<!-- @include('partials/feed-placeholder.html', {
+							'type': 'guest',
+							'text': 'Опубликуйте первый рецепт, чтобы привлечь читаталей',
+							'btn': 'new-recipe'
+						}) -->
+
+						<!-- Если рецептов нет -->
+						<!-- @include('partials/feed-placeholder.html', {
+							'type': 'auth',
+							'text': 'Опубликуйте первый рецепт, чтобы привлечь читаталей',
+							'btn': 'new-recipe'
+						}) -->
+
+						<!-- Если рецепты есть -->
 						@include('partials/feed-item.html', {
 							'page': 'index'
 						})
