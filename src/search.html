@@ -67,55 +67,57 @@
 				</nav>
 
         <main class="search" id="skip-link">
-					<div class="info  search__info">
-						<div class="info__inner">
-							<h1 class="section-h1  info__name">вкусняшки от катюши</h1>
-							<p class="info__desc">Найдено 4 результата</p>
+					<div class="search__top">
+						<div class="info  search__info">
+							<div class="info__inner">
+								<h1 class="section-h1  info__name">вкусняшки от катюши</h1>
+								<p class="info__desc">Найдено 4 результата</p>
+							</div>
+						</div>
+						<div class="filter  search__filter">
+							<div class="filter__list">
+								<div class="filter__item" data-filter>
+									<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Время приготовления»" aria-expanded="false" data-filter-toggle="cooking-time">
+										Время приготовления
+										<svg class="icon icon--16" aria-hidden="true" focusable="false">
+											<use href="img/sprite.svg#chevron-down"/>
+										</svg>
+									</button>
+									<form action="https://echo.htmlacademy.ru" method="GET" name="filter" class="filter-menu" data-filter-menu>
+										<div class="filter-menu__item" data-filter-item>
+											<button value="30min" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Менее 30 минут</button>
+										</div>
+										<div class="filter-menu__item" data-filter-item>
+											<button value="30min2hours" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">От 30 минут до 2 часов</button>
+										</div>
+										<div class="filter-menu__item" data-filter-item>
+											<button value="2hours" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Более 2 часов</button>
+										</div>
+									</form>
+								</div>
+								<div class="filter__item" data-filter>
+									<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Количество ингредиентов»" aria-expanded="false" data-filter-toggle="ingredients">
+										Кол-во ингредиентов
+										<svg class="icon icon--16" aria-hidden="true" focusable="false">
+											<use href="img/sprite.svg#chevron-down"/>
+										</svg>
+									</button>
+									<form action="" method="GET" name="filter" class="filter-menu" class="filter-menu" data-filter-menu>
+										<div class="filter-menu__item" data-filter-item>
+											<button value="less5" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Менее 5 ингредиентов</button>
+										</div>
+										<div class="filter-menu__item" data-filter-item>
+											<button value="5to10" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">От 5 до 10 ингредиентов</button>
+										</div>
+										<div class="filter-menu__item" data-filter-item>
+											<button value="more10" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Более 10 ингредиентов</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<button class="btn  filter__clear" data-filter-clear disabled>Очистить фильтры</button>
 						</div>
 					</div>
-					<!-- <div class="filter  search__filter">
-						<div class="filter__list">
-							<div class="filter__item" data-filter>
-								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Время приготовления»" aria-expanded="false" data-filter-toggle="cooking-time">
-									Время приготовления
-									<svg class="icon icon--16" aria-hidden="true" focusable="false">
-										<use href="img/sprite.svg#chevron-down"/>
-									</svg>
-								</button>
-								<form action="https://echo.htmlacademy.ru" method="GET" name="filter" class="filter-menu" data-filter-menu>
-									<div class="filter-menu__item" data-filter-item>
-										<button value="30min" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Менее 30 минут</button>
-									</div>
-									<div class="filter-menu__item" data-filter-item>
-										<button value="30min2hours" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">От 30 минут до 2 часов</button>
-									</div>
-									<div class="filter-menu__item" data-filter-item>
-										<button value="2hours" name="cooking-time" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Более 2 часов</button>
-									</div>
-								</form>
-							</div>
-							<div class="filter__item" data-filter>
-								<button class="btn-reset filter__toggle" aria-label="Открыть фильтр «Количество ингредиентов»" aria-expanded="false" data-filter-toggle="ingredients">
-									Кол-во ингредиентов
-									<svg class="icon icon--16" aria-hidden="true" focusable="false">
-										<use href="img/sprite.svg#chevron-down"/>
-									</svg>
-								</button>
-								<form action="" method="GET" name="filter" class="filter-menu" class="filter-menu" data-filter-menu>
-									<div class="filter-menu__item" data-filter-item>
-										<button value="less5" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Менее 5 ингредиентов</button>
-									</div>
-									<div class="filter-menu__item" data-filter-item>
-										<button value="5to10" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">От 5 до 10 ингредиентов</button>
-									</div>
-									<div class="filter-menu__item" data-filter-item>
-										<button value="more10" name="ingredients" class="btn-reset filter-menu__btn" tabindex="-1" type="submit">Более 10 ингредиентов</button>
-									</div>
-								</form>
-							</div>
-						</div>
-						<button class="btn  filter__clear" data-filter-clear disabled>Очистить фильтры</button>
-					</div> -->
 					<div class="feed  search__feed">
 						<!-- Если результатов нет -->
 						@include('partials/feed-placeholder.html', {
