@@ -1,4 +1,4 @@
-import GraphModal from 'graph-modal';
+import GraphModal from '../functions/graph-modal.js';
 
 const modal = new GraphModal({
 	isOpen: (modal) => {
