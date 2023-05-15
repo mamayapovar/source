@@ -10,7 +10,8 @@
     "cache": "gulp cache",
     "backend": "gulp backend",
     "release": "gulp release",
-    "deploy": "gulp build && gh-pages -d app -r https://github.com/mamayapovar/mamayapovar.github.io.git"
+		"deploy": "npm run backend && npm run release",
+    "deploy-gh": "gulp build && gh-pages -d app -r https://github.com/mamayapovar/mamayapovar.github.io.git"
   },
   "author": "sonniydsgn",
   "devDependencies": {
