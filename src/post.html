@@ -234,28 +234,16 @@
 							</div>
 						</form>
 						<div class="comments__list">
-							<article class="comments-item">
-								<div class="comments-item__info">
-									<a href="user.html" class="comments-item__avatar">
-										<img src="img/placeholder-avatar.jpg" alt="Фото профиля" width="40" height="40" loading="lazy">
-									</a>
-									<a href="user.html" class="comments-item__author">Алексей Калинин</a>
-									<time class="comments-item__date" datetime="2022-12-02 16:28">28 минут</time>
-								</div>
-								<p class="comments-item__text">Сразу же, как увидел рецепт, решил оценить его на практике.
-									И, о чудо! Оладьи получаются невероятно пышными :)
-								</p>
-							</article>
-							<article class="comments-item">
-								<div class="comments-item__info">
-									<a href="user.html" class="comments-item__avatar">
-										<img src="img/placeholder-avatar.jpg" alt="Фото профиля" width="40" height="40" loading="lazy">
-									</a>
-									<a href="user.html" class="comments-item__author">Николай Крылов</a>
-									<time class="comments-item__date" datetime="2022-12-02 17:00">1 час</time>
-								</div>
-								<p class="comments-item__text">Кайфарик</p>
-							</article>
+							@include('partials/comment-item.html', {
+								'name': 'Алексей Калинин',
+								'time': '28 минут',
+								'text': 'Сразу же, как увидел рецепт, решил оценить его на практике. И, о чудо! Оладьи получаются невероятно пышными c:'
+							})
+							@include('partials/comment-item.html', {
+								'name': 'Николай Крылов',
+								'time': '1 час',
+								'text': 'Кайфарик'
+							})
 						</div>
 					</section>
         </main>
