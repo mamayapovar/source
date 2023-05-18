@@ -12,7 +12,7 @@
 
 		<div class="container">
 			<div class="site-container">
-				<aside class="sidebar  sidebar--second" id="new-recipe-menu">
+				<aside class="sidebar  sidebar--second" id="recipe-menu">
 					<div class="sidebar__inner">
 						<div class="sidebar-tree">
 							<ul class="list-reset sidebar-tree__list">
@@ -211,8 +211,8 @@
 						<fieldset class="form-section  new-recipe-section  new-recipe-section--photo  photo" id="new-recipe-photo">
 							<legend class="section-h2  form-section__title">Фото блюда</legend>
 							<div class="imageuploader">
-								<div class="input  input--photo  imageuploader__input">
-									<input type="file" name="photo" id="photo" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото блюда">
+								<div class="input  input--photo  imageuploader__wrapper">
+									<input type="file" class="imageuploader__input" name="photo" id="photo" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото блюда">
 									<div class="imageuploader__placeholder">
 										<svg class="icon" aria-hidden="true" focusable="false">
 											<use href="img/sprite.svg#image"/>
@@ -245,8 +245,8 @@
 									</button>
 									<div class="step-item__body">
 										<div class="imageuploader  imageuploader--small  step-item__imageuploader">
-											<div class="input  input--photo  imageuploader__input">
-												<input type="file" name="step-photo-5329123723" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото шага">
+											<div class="input  input--photo  imageuploader__wrapper">
+												<input type="file" class="imageuploader__input" name="step-photo-5329123723" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото шага">
 												<div class="imageuploader__placeholder">
 													<svg class="icon" aria-hidden="true" focusable="false">
 														<use href="img/sprite.svg#image"/>
@@ -278,8 +278,8 @@
 									</button>
 									<div class="step-item__body">
 										<div class="imageuploader  imageuploader--small  step-item__imageuploader">
-											<div class="input  input--photo  imageuploader__input">
-												<input type="file" name="step-photo-82391238" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото шага">
+											<div class="input  input--photo  imageuploader__wrapper">
+												<input type="file" class="imageuploader__input" name="step-photo-82391238" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото шага">
 												<div class="imageuploader__placeholder">
 													<svg class="icon" aria-hidden="true" focusable="false">
 														<use href="img/sprite.svg#image"/>
@@ -310,7 +310,7 @@
 								</svg>
 							</button>
 						</fieldset>
-						<a href="#new-recipe-menu" class="skip-link  skip-link--new-recipe">Перейти к меню публикации рецепта</a>
+						<a href="#recipe-menu" class="skip-link  skip-link--recipe-menu">Перейти к меню публикации рецепта</a>
 					</form>
 				</main>
 			</div>

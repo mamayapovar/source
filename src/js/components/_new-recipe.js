@@ -189,8 +189,8 @@
 				</button>
 				<div class="step-item__body">
 					<div class="imageuploader  imageuploader--small  step-item__imageuploader">
-						<div class="input  input--photo  imageuploader__input">
-							<input type="file" name="step-photo-${fieldIndex}" id="step-photo-${fieldIndex}" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото шага">
+						<div class="input  input--photo  imageuploader__wrapper">
+							<input type="file" class="imageuploader__input" name="step-photo-${fieldIndex}" id="step-photo-${fieldIndex}" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото шага">
 							<div class="imageuploader__placeholder">
 								<svg class="icon" aria-hidden="true" focusable="false">
 									<use href="${svgImage}"/>

@@ -4,10 +4,10 @@
 		document.addEventListener('click', (e) => {
 			const target = e.target
 			if (target.classList.contains('imageuploader__input')) {
-				const image = target
-				const input = image.querySelector('input[type="file"]')
-				const placeholder = image.querySelector('.imageuploader__placeholder')
-				const delBtn = target.parentNode.querySelector('.imageuploader__btn')
+				const input = target
+				const wrapper = target.parentNode
+				const placeholder = wrapper.querySelector('.imageuploader__placeholder')
+				const delBtn = wrapper.parentNode.querySelector('.imageuploader__btn')
 
 				input.addEventListener('change', () => {
 					if (!input.value == "") {
@@ -16,7 +16,7 @@
 
 						reader.addEventListener('load', () => {
 							uploadedImage = reader.result
-							image.style.backgroundImage = `url(${uploadedImage})`
+							wrapper.style.backgroundImage = `url(${uploadedImage})`
 							placeholder.classList.add('hidden')
 							delBtn.classList.remove('hidden')
 						})
@@ -26,15 +26,15 @@
 			}
 
 			if (target.classList.contains('imageuploader__btn')) {
-				const image = target.parentNode.querySelector('.imageuploader__input')
-				const input = image.querySelector('input[type="file"]')
-				const placeholder = image.querySelector('.imageuploader__placeholder')
+				const wrapper = target.parentNode.querySelector('.imageuploader__wrapper')
+				const input = wrapper.querySelector('.imageuploader__input')
+				const placeholder = wrapper.querySelector('.imageuploader__placeholder')
 				const delBtn = target
 
 				e.preventDefault()
 				input.value = "";
 				uploadedImage = ""
-				image.style.backgroundImage = 'none'
+				wrapper.style.backgroundImage = 'none'
 				placeholder.classList.remove('hidden')
 				delBtn.classList.add('hidden')
 			}

@@ -40,16 +40,28 @@
 }
 
 .info-avatar {
+  position: relative;
+  overflow: hidden;
   border-radius: 100%;
 
-  &__input {
+  &__wrapper {
     @include bg-cover;
 
-    position: relative;
-    border: none;
+    border-style: solid;
+    border-color: var(--color-bg-island);
     border-radius: 100%;
 
+    &:focus-within {
+      border-color: var(--color-fields-border-focused);
+
+      &:hover {
+        border-color: var(--color-fields-border-focused);
+      }
+    }
+
     &:hover {
+      border-color: var(--color-bg-island);
+
       .info-avatar__placeholder {
         opacity: 1;
       }
@@ -57,7 +69,6 @@
   }
 
   &__placeholder {
-    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +78,7 @@
     background-color: var(--color-button-other-bg);
     opacity: 0;
     transition: opacity 0.2s ease;
+    pointer-events: none;
   }
 
   .icon {

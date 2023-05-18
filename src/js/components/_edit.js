@@ -8,10 +8,10 @@
 					if (uploader.getAttribute('data-image-url') != '' && uploader.getAttribute('data-image-url') != null) {
 						const url = uploader.getAttribute('data-image-url')
 						const nameFile = uploader.getAttribute('data-image-name');
-						const image = uploader.querySelector('.imageuploader__input')
-						const input = uploader.querySelector('input[type="file"]')
-						const placeholder = image.querySelector('.imageuploader__placeholder')
-						const delBtn = image.parentNode.querySelector('.imageuploader__btn')
+						const wrapper = uploader.querySelector('.imageuploader__wrapper')
+						const input = uploader.querySelector('.imageuploader__input')
+						const placeholder = wrapper.querySelector('.imageuploader__placeholder')
+						const delBtn = wrapper.parentNode.querySelector('.imageuploader__btn')
 
 						const fetchImage = async (url) => {
 							const data = await fetch(url);
@@ -26,7 +26,7 @@
 
 						dT.items.add(file);
 						input.files = dT.files;
-						image.style.backgroundImage = `url(${url})`
+						wrapper.style.backgroundImage = `url(${url})`
 						placeholder.classList.add('hidden')
 						delBtn.classList.remove('hidden')
 					}

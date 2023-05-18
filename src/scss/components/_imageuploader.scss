@@ -2,10 +2,11 @@
   position: relative;
   display: grid;
   grid-template-rows: 300px auto;
+  overflow: hidden;
   width: 100%;
   gap: 8px;
 
-  &__input {
+  &__wrapper {
     @include bg-cover;
 
     &:focus-within {

@@ -2,8 +2,8 @@
 	<div class="info__inner">
 		@if (context.type == 'self') {
 			<div class="info-avatar  info-avatar--change">
-				<div style="background-image: url('img/placeholder-avatar.jpg');" class="input  input--photo  info-avatar__input">
-					<input type="file" name="photo" accept=".jpg, .jpeg, .png" aria-label="Изменить фото профиля">
+				<div style="background-image: url('img/placeholder-avatar.jpg');" class="input  input--photo  info-avatar__wrapper">
+					<input type="file" class="info-avatar__input" name="photo" accept=".jpg, .jpeg, .png" aria-label="Изменить фото профиля">
 					<div class="info-avatar__placeholder">
 						<svg class="icon" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#image"/>
