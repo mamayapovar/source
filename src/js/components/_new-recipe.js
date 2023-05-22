@@ -124,7 +124,7 @@
 	}
 })();
 
-// ИНСТРУКЦИЯ ПРИГОТОВЛЕНИЯ
+// СПОСОБ ПРИГОТОВЛЕНИЯ
 (function(){
 	if (document.querySelector('.step')) {
 		const stepSection = document.querySelector('.step');
