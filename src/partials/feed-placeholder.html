@@ -13,7 +13,7 @@
 
 		@if (context.btn == 'new-recipe') {
 			@if (context.type == 'guest') {
-				<button class="btn  btn--small  feed-placeholder__btn" data-graph-path="register" data-graph-speed="100" aria-label="Создать новый рецепт">Создать рецепт</button>
+				<button class="btn  btn--small  feed-placeholder__btn" data-graph-path="register" aria-label="Создать новый рецепт">Создать рецепт</button>
 			}
 			@if (context.type != 'guest') {
 				<a href="new-recipe.html" class="btn  btn--small  feed-placeholder__btn">Создать рецепт</a>

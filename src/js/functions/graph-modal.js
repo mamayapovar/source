@@ -6,7 +6,7 @@ export default class GraphModal {
     }
     this.options = Object.assign(defaultOptions, options);
     this.modal = document.querySelector('.graph-modal');
-    this.speed = 300;
+    this.speed = 100;
     this.animation = 'fade';
     this._reOpen = false;
     this._nextContainer = false;
@@ -36,7 +36,7 @@ export default class GraphModal {
           let animation = clickedElement.dataset.graphAnimation;
           let speed = clickedElement.dataset.graphSpeed;
           this.animation = animation ? animation : 'fade';
-          this.speed = speed ? parseInt(speed) : 300;
+          this.speed = speed ? parseInt(speed) : 100;
           this._nextContainer = document.querySelector(`[data-graph-target="${target}"]`);
           this.open();
           return;

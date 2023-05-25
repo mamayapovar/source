@@ -1,8 +1,30 @@
 .graph-modal {
+  transition: backdrop-filter 0.2s, opacity 0.1s, visibility 0.1s;
+  backdrop-filter: none;
+
   &__close {
     position: absolute;
     right: -48px;
     top: 0;
     background-image: none;
   }
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition: backdrop-filter 0.2s, opacity 0.1s, visibility 0.1s;
+    backdrop-filter: blur(4px);
+  }
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: transform 0.08s ease, opacity 0.15s;
+}
+
+.fade.animate-open {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.08s ease, opacity 0.15s;
 }

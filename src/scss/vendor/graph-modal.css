@@ -85,15 +85,3 @@
   opacity: 1;
   transition: opacity var(--transition-time);
 }
-
-.fadeInUp {
-  opacity: 0;
-  transform: translateY(-100px);
-  transition: transform var(--transition-time), opacity var(--transition-time);
-}
-
-.fadeInUp.animate-open {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform var(--transition-time), opacity var(--transition-time);
-}
