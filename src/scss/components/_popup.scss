@@ -1,8 +1,10 @@
 .popup {
   &__container {
     position: relative;
+    border-radius: 16px;
     padding: 64px 32px;
     max-width: 400px;
+    background-color: var(--color-bg-island);
 
     &--auth {
       .popup__bottom {
@@ -37,11 +39,4 @@
     line-height: var(--lh-s);
     color: var(--color-text-primary);
   }
-}
-
-.graph-modal__close {
-  position: absolute;
-  right: -48px;
-  top: 0;
-  background-image: none;
 }

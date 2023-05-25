@@ -1,4 +1,4 @@
-<div class="graph-modal  popup">
+<div class="graph-modal">
   <div class="graph-modal__container  popup__container  popup__container--register" role="dialog" aria-modal="true" data-graph-target="register">
     <button class="btn-reset js-modal-close graph-modal__close  btn  btn--other" aria-label="Закрыть модальное окно">
       <svg class="icon" aria-hidden="true" focusable="false">
@@ -75,6 +75,40 @@
       <div class="popup__bottom">
         <a href="#" class="section-link  popup__link">Забыли пароль?</a>
         <button class="btn-reset  section-link  popup__link" data-graph-path="register" data-graph-speed="0">Регистрация</button>
+      </div>
+    </div>
+  </div>
+	<div class="graph-modal__container  dialog__container  dialog__container--error" role="dialog" aria-modal="true" data-graph-target="delete-account">
+    <div class="graph-modal__content  dialog__content">
+			<div class="dialog__icon">
+				<svg class="icon" aria-hidden="true" focusable="false">
+					<use href="img/sprite.svg#delete"/>
+				</svg>
+			</div>
+			<div class="dialog__info">
+				<h2 class="section-h3  dialog__title">Удаление аккаунта</h2>
+				<p class="dialog__desc">Вы уверены, что хотите удалить свой аккаунт? Ваши рецепты и комментарии будут удалены навсегда.</p>
+			</div>
+      <div class="dialog__bottom">
+				<button class="btn  btn--default  btn--small  dialog__btn  js-modal-close">Отменить</button>
+				<a href="index.html" class="btn  btn--important  btn--small  dialog__btn">Удалить</a>
+      </div>
+    </div>
+  </div>
+	<div class="graph-modal__container  dialog__container  dialog__container--error" role="dialog" aria-modal="true" data-graph-target="delete-recipe">
+    <div class="graph-modal__content  dialog__content">
+			<div class="dialog__icon">
+				<svg class="icon" aria-hidden="true" focusable="false">
+					<use href="img/sprite.svg#delete"/>
+				</svg>
+			</div>
+			<div class="dialog__info">
+				<h2 class="section-h3  dialog__title">Удаление рецепта</h2>
+				<p class="dialog__desc">Вы уверены, что хотите навсегда удалить этот рецепт?</p>
+			</div>
+      <div class="dialog__bottom">
+				<button class="btn  btn--default  btn--small  dialog__btn  js-modal-close">Отменить</button>
+				<a href="index.html" class="btn  btn--important  btn--small  dialog__btn">Удалить</a>
       </div>
     </div>
   </div>

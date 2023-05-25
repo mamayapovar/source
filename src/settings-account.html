@@ -42,6 +42,7 @@
 
 				<main class="settings  settings--account" id="skip-link">
 					<h1 class="visually-hidden">Настройки аккаунта</h1>
+
 					<form id="settings-email-form" action="https://echo.htmlacademy.ru" method="POST" class="settings__form  settings__form--email">
 						<fieldset class="form-section  settings-section">
 							<legend class="section-h2  form-section__title">Электронная почта</legend>
@@ -57,6 +58,7 @@
 							</div>
 						</fieldset>
 					</form>
+
 					<form id="settings-password-form" action="https://echo.htmlacademy.ru" method="POST" class="settings__form  settings__form--password">
 						<fieldset class="form-section  settings-section">
 							<legend class="section-h2  form-section__title">Изменение пароля</legend>
@@ -91,21 +93,21 @@
 							</div>
 							<div class="settings-section__bottom">
 								<button type="submit" class="btn  settings-section__btn">Обновить пароль</button>
-								<button type="button" class="btn  btn--third  settings-section__btn">Восстановить пароль</button>
+								<button type="button" class="btn  btn--third  settings-section__btn  disabled">Восстановить пароль</button>
 							</div>
 						</fieldset>
 					</form>
-					<form id="settings-delete-form" action="https://echo.htmlacademy.ru" method="POST" class="settings__form  settings__form--delete">
-						<fieldset class="form-section  settings-section">
-							<legend class="section-h2  form-section__title">Удаление аккаунта</legend>
-							<p class="settings-section__desc">Как только вы удалите свой аккаунт, восстановить его будет невозможно. Пожалуйста, будьте уверены.</p>
-							<div class="settings-section__bottom">
-								<button type="submit" class="btn  btn--second  btn--important  settings-section__btn">Удалить мой аккаунт</button>
-							</div>
-						</fieldset>
-					</form>
+
+					<fieldset class="form-section  settings-section  settings-section--delete">
+						<legend class="section-h2  form-section__title">Удаление аккаунта</legend>
+						<p class="settings-section__desc">Вы можете навсегда удалить свой аккаунт и все его данные</p>
+						<div class="settings-section__bottom">
+							<button type="button" class="btn  btn--important  btn--second  settings-section__btn" data-graph-path="delete-account" data-graph-speed="100">Удалить мой аккаунт</button>
+						</div>
+					</fieldset>
 				</main>
 			</div>
 		</div>
+		@include('partials/modals.html')
 	</body>
 </html>
