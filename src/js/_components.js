@@ -17,4 +17,5 @@ import './components/_info-avatar.js';
 import './components/_search-query-server.js';
 import './components/_filter.js';
 import './components/_edit.js';
+import './components/_toast.js';
 
