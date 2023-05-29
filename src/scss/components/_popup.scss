@@ -17,6 +17,19 @@
   &__content {
     display: flex;
     flex-direction: column;
+
+    &--success {
+      align-items: center;
+      text-align: center;
+
+      .popup__title {
+        margin-bottom: 12px;
+      }
+
+      .popup__icon {
+        margin-bottom: 24px;
+      }
+    }
   }
 
   &__form {
