@@ -50,12 +50,15 @@
 			const option = searchList.children[newIndex];
 			if (prevOption) {
 				prevOption.classList.remove("focused");
+				prevOption.removeAttribute('aria-selected')
 			}
 			if (option) {
 				option.classList.add("focused");
+				option.setAttribute('aria-selected', 'true')
 			}
 			if (option != optionsList[optionsCount]) {
 				optionsList[optionsCount].classList.remove('focused');
+				optionsList[optionsCount].removeAttribute('aria-selected');
 			}
 			optionHoveredIndex = newIndex;
 		}
@@ -90,14 +93,10 @@
 			// переход по ссылке в списке результатов
 			if (e.key === "Enter" && searchMenu.classList.contains('active')) {
 				if (searchList.children[optionHoveredIndex]) {
+					e.preventDefault();
 					const option = searchList.children[optionHoveredIndex];
-					if (option.hasAttribute('data-search-link')) {
-						e.preventDefault();
-						const link = option.querySelector('a');
-						const href = link.getAttribute('href');
-						document.location = href;
-						searchMenuClose();
-					}
+					option.firstElementChild.click()
+					searchMenuClose();
 				}
 			}
 

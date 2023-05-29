@@ -88,14 +88,15 @@
 
 			if (prevOption) {
 				prevOption.classList.remove("focused");
+				prevOption.removeAttribute('aria-selected')
 			}
-
 			if (option) {
 				option.classList.add("focused");
+				option.setAttribute('aria-selected', 'true')
 			}
-
 			if (option != optionsList[optionsCount]) {
-				optionsList[optionsCount].classList.remove('focused')
+				optionsList[optionsCount].classList.remove('focused');
+				optionsList[optionsCount].removeAttribute('aria-selected');
 			}
 
 			optionHoveredIndex = newIndex;
@@ -134,15 +135,10 @@
 					e.preventDefault();
 				}
         if (searchList.children[optionHoveredIndex]) {
-          const option = searchList.children[optionHoveredIndex];
-
-          if (option.hasAttribute('data-search-link')) {
-            e.preventDefault();
-            const link = option.querySelector('a');
-            const href = link.getAttribute('href');
-            document.location = href;
-            searchMenuClose();
-          }
+					e.preventDefault();
+					const option = searchList.children[optionHoveredIndex];
+					option.firstElementChild.click()
+					searchMenuClose();
         }
 			}
 

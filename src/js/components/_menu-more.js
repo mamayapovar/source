@@ -52,14 +52,17 @@
 
 				if (prevOption) {
 					prevOption.classList.remove("focused");
+					prevOption.removeAttribute('aria-selected')
 				}
 
 				if (option) {
 					option.classList.add("focused");
+					option.setAttribute('aria-selected', 'true')
 				}
 
 				if (option != optionsList[optionsCount]) {
 					optionsList[optionsCount].classList.remove('focused')
+					optionsList[optionsCount].removeAttribute('aria-selected');
 				}
 
 				optionHoveredIndex = newIndex;
@@ -93,16 +96,7 @@
           if (menuMoreList.children[optionHoveredIndex]) {
             e.preventDefault();
             const option = menuMoreList.children[optionHoveredIndex];
-
-            if (option.querySelector('a')) {
-              const link = option.querySelector('a');
-              const href = link.getAttribute('href');
-              document.location = href;
-            } else if (option.querySelector('button')) {
-              const btn = option.querySelector('button');
-              const href = btn.getAttribute('data-url_root');
-              document.location = href;
-            }
+						option.firstElementChild.click()
             closeMenu();
           }
 				}
