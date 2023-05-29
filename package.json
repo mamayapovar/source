@@ -9,8 +9,7 @@
     "dev": "gulp",
     "cache": "gulp cache",
     "backend": "gulp backend",
-    "release": "gulp release",
-		"deploy": "npm run backend && npm run release",
+    "build": "gulp build",
     "deploy-gh": "gulp build && gh-pages -d app -r https://github.com/mamayapovar/mamayapovar.github.io.git"
   },
   "author": "sonniydsgn",
@@ -18,6 +17,7 @@
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
     "babel-loader": "^8.2.3",
+    "babel-plugin-transform-remove-imports": "^1.7.0",
     "browser-sync": "^2.26.14",
     "del": "^6.0.0",
     "editorconfig-checker": "^4.0.1",

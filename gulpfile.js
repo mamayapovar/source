@@ -22,9 +22,7 @@ const htmlmin = require('gulp-htmlmin');
 const gulpif = require('gulp-if');
 const notify = require('gulp-notify');
 const image = require('gulp-imagemin');
-const {
-  readFileSync
-} = require('fs');
+const { readFileSync} = require('fs');
 const typograf = require('gulp-typograf');
 const mainSass = gulpSass(sass);
 const webpackStream = require('webpack-stream');
@@ -35,39 +33,46 @@ const path = require('path');
 const srcFolder = './src';
 const buildFolder = './app';
 const backendFolder = '../myap-p/mamayapovar/static/recipes';
-const releaseFolder = '../myap-p/mamayapovar/recipes/static/recipes';
+const backendSecondFolder = '../myap-p/mamayapovar/recipes/static/recipes';
 const paths = {
   srcSvg: `${srcFolder}/img/svg/**.svg`,
   srcImgFolder: `${srcFolder}/img`,
   buildImgFolder: `${buildFolder}/img`,
 	backendImgFolder: `${backendFolder}/img`,
-	releaseImgFolder: `${releaseFolder}/img`,
+	backendSecondImgFolder: `${backendSecondFolder}/img`,
   srcScss: `${srcFolder}/scss/**/*.scss`,
   buildCssFolder: `${buildFolder}/css`,
 	backendCssFolder: `${backendFolder}/css`,
-	releaseCssFolder: `${releaseFolder}/css`,
+	backendSecondCssFolder: `${backendSecondFolder}/css`,
   srcFullJs: `${srcFolder}/js/**/*.js`,
   srcMainJs: `${srcFolder}/js/main.js`,
   buildJsFolder: `${buildFolder}/js`,
 	backendJsFolder: `${backendFolder}/js`,
-	releaseJsFolder: `${releaseFolder}/js`,
+	backendSecondJsFolder: `${backendSecondFolder}/js`,
   srcPartialsFolder: `${srcFolder}/partials`,
   resourcesFolder: `${srcFolder}/resources`,
 };
 
 let isProd = false; // dev by default
-let isBackend = false;
+let isBackend = false; // front by default
 
 const clean = () => {
   return del([buildFolder])
 }
 
 const cleanBackend = () => {
-  return gulpif(isBackend, del([paths.backendCssFolder, paths.backendImgFolder, `${backendFolder}/fonts`, `${backendFolder}/js/main.js`, `${backendFolder}/favicon.ico`], {force: true}))
-}
-
-const cleanRelease = () => {
-  return gulpif(isProd, del([paths.releaseCssFolder, paths.releaseImgFolder, `${releaseFolder}/fonts`, `${releaseFolder}/js/main.js`, `${releaseFolder}/favicon.ico`], {force: true}))
+  return del([
+			paths.backendCssFolder,
+			paths.backendJsFolder,
+			paths.backendImgFolder,
+			`${backendFolder}/fonts`,
+			`${backendFolder}/favicon.ico`,
+			paths.backendSecondCssFolder,
+			paths.backendSecondJsFolder,
+			paths.backendSecondImgFolder,
+			`${backendSecondFolder}/fonts`,
+			`${backendSecondFolder}/favicon.ico`
+		], {force: true})
 }
 
 //svg sprite
@@ -102,7 +107,7 @@ const svgSprites = () => {
     }))
     .pipe(dest(paths.buildImgFolder))
 		.pipe(gulpif(isBackend, dest(paths.backendImgFolder)))
-		.pipe(gulpif(isProd, dest(paths.releaseImgFolder)))
+		.pipe(gulpif(isBackend, dest(paths.backendSecondImgFolder)))
 }
 
 // scss styles
@@ -123,44 +128,9 @@ const styles = () => {
       level: 2
     })))
     .pipe(dest(paths.buildCssFolder, { sourcemaps: '.' }))
-    .pipe(browserSync.stream());
-};
-
-// styles backend
-const stylesBackend = () => {
-  return src(paths.srcScss)
-    .pipe(plumber(
-      notify.onError({
-        title: "SCSS",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(mainSass())
-    .pipe(autoprefixer({
-      cascade: false,
-      overrideBrowserslist: ["last 5 versions"]
-    }))
-    .pipe(dest(paths.backendCssFolder))
-};
-
-// styles release
-const stylesRelease = () => {
-  return src(paths.srcScss)
-    .pipe(plumber(
-      notify.onError({
-        title: "SCSS",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(mainSass())
-    .pipe(autoprefixer({
-      cascade: false,
-      overrideBrowserslist: ["last 5 versions"]
-    }))
-    .pipe(cleanCSS({
-      level: 2
-    }))
-    .pipe(dest(paths.releaseCssFolder))
+		.pipe(gulpif(isBackend, dest(paths.backendCssFolder)))
+		.pipe(gulpif(isBackend, dest(paths.backendSecondCssFolder)))
+    .pipe(browserSync.stream())
 };
 
 // scripts
@@ -188,7 +158,27 @@ const scripts = () => {
                 ['@babel/preset-env', {
                   targets: "defaults"
                 }]
-              ]
+              ],
+							"plugins": [
+								[
+									"babel-plugin-transform-remove-imports",
+									!isBackend ? {
+										"test": [
+											"./components/_search-query-server.js",
+											"./components/_edit.js"
+										]
+									} : {
+										"test": [
+											"./components/_bookmark.js",
+											"./components/_like.js",
+											"./components/_subscribe.js",
+											"./components/_search-query.js",
+											"./components/_toast.js",
+											"./components/_filter.js",
+										]
+									}
+								]
+							]
             }
           }
         }]
@@ -200,92 +190,16 @@ const scripts = () => {
       this.emit('end');
     })
     .pipe(dest(paths.buildJsFolder))
+		.pipe(gulpif(isBackend, dest(paths.backendJsFolder)))
+		.pipe(gulpif(isBackend, dest(paths.backendSecondJsFolder)))
     .pipe(browserSync.stream());
-}
-
-// scripts backend
-const scriptsBackend = () => {
-  return src(paths.srcMainJs)
-    .pipe(plumber(
-      notify.onError({
-        title: "JS",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(webpackStream({
-      mode: 'development',
-      output: {
-        filename: 'main.js',
-      },
-      module: {
-        rules: [{
-          test: /\.m?js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', {
-                  targets: "defaults"
-                }]
-              ]
-            }
-          }
-        }]
-      },
-      devtool: false
-    }))
-    .on('error', function (err) {
-      console.error('WEBPACK ERROR', err);
-      this.emit('end');
-    })
-    .pipe(dest(paths.backendJsFolder))
-}
-
-// scripts release
-const scriptsRelease = () => {
-  return src(paths.srcMainJs)
-    .pipe(plumber(
-      notify.onError({
-        title: "JS",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(webpackStream({
-      mode: 'production',
-      output: {
-        filename: 'main.js',
-      },
-      module: {
-        rules: [{
-          test: /\.m?js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', {
-                  targets: "defaults"
-                }]
-              ]
-            }
-          }
-        }]
-      },
-      devtool: false
-    }))
-    .on('error', function (err) {
-      console.error('WEBPACK ERROR', err);
-      this.emit('end');
-    })
-    .pipe(dest(paths.releaseJsFolder))
 }
 
 const resources = () => {
   return src(`${paths.resourcesFolder}/**`)
     .pipe(dest(buildFolder))
 		.pipe(gulpif(isBackend, dest(backendFolder)))
-		.pipe(gulpif(isProd, dest(releaseFolder)))
+		.pipe(gulpif(isBackend, dest(backendSecondFolder)))
 }
 
 const images = () => {
@@ -301,7 +215,7 @@ const images = () => {
     ])))
     .pipe(dest(paths.buildImgFolder))
 		.pipe(gulpif(isBackend, dest(paths.backendImgFolder)))
-		.pipe(gulpif(isProd, dest(paths.releaseImgFolder)))
+		.pipe(gulpif(isBackend, dest(paths.backendSecondImgFolder)))
 };
 
 const htmlInclude = () => {
@@ -380,8 +294,6 @@ exports.default = series(clean, htmlInclude, scripts, styles, resources, images,
 
 exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, svgSprites, htmlMinify);
 
-exports.backend = series(toBackend, cleanBackend, scriptsBackend, stylesBackend, resources, images, svgSprites)
-
-exports.release = series(toProd, cleanRelease, scriptsRelease, stylesRelease, resources, images, svgSprites);
+exports.backend = series(toProd, toBackend, cleanBackend, scripts, styles, resources, images, svgSprites)
 
 exports.cache = series(cache, rewrite);
