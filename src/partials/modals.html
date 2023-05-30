@@ -1,6 +1,5 @@
 <div class="graph-modal">
   <div class="graph-modal__container  popup__container  popup__container--register" role="dialog" aria-modal="true" data-graph-target="register">
-
     <button class="btn-reset js-modal-close graph-modal__close  btn  btn--other" aria-label="Закрыть модальное окно">
       <svg class="icon" aria-hidden="true" focusable="false">
         <use href="img/sprite.svg#cross"/>
@@ -12,7 +11,7 @@
       <h2 class="section-h2  popup__title">Регистрация</h2>
       <form id="register-form" action="https://echo.htmlacademy.ru" method="POST" class="popup__form">
 				<div class="form-field">
-					<input type="text" name="username" id="username-register" class="input  popup__input" placeholder="Имя и фамилия" pattern="[A-Za-zА-Яа-яЁё\s]{0,100}">
+					<input type="text" name="username" id="username-register" class="input  popup__input" placeholder="Имя и фамилия" autocomplete="name">
 					<label class="form-field__error  hidden" for="username-register">
 						<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#circle-cross"/>
@@ -21,7 +20,7 @@
 					</label>
 				</div>
 				<div class="form-field">
-					<input type="email" name="email" id="email-register" class="input  popup__input" placeholder="Электронная почта">
+					<input type="email" name="email" id="email-register" class="input  popup__input" placeholder="Электронная почта" autocomplete="username">
 					<label class="form-field__error  hidden" for="email-register">
 						<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#circle-cross"/>
@@ -30,7 +29,7 @@
 					</label>
 				</div>
 				<div class="form-field">
-					<input type="password" name="password" id="password-register" class="input  popup__input" placeholder="Пароль">
+					<input type="password" name="password" id="password-register" class="input  popup__input" placeholder="Пароль" autocomplete="new-password">
 					<label class="form-field__error  hidden" for="password-register">
 						<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#circle-cross"/>
@@ -53,10 +52,10 @@
 			<p class="popup__desc">Регистрация прошла успешно</p>
 			<p class="popup__desc">Скоро вас перенаправит на главную</p>
     </div> -->
-
   </div>
+
   <div class="graph-modal__container  popup__container  popup__container--auth" role="dialog" aria-modal="true" data-graph-target="auth">
-    <button class="btn-reset  js-modal-close  graph-modal__close  btn  btn--other" aria-label="Закрыть модальное окно">
+		<button class="btn-reset  js-modal-close  graph-modal__close  btn  btn--other" aria-label="Закрыть модальное окно">
       <svg class="icon" aria-hidden="true" focusable="false">
         <use href="img/sprite.svg#cross"/>
       </svg>
@@ -65,7 +64,7 @@
       <h2 class="section-h2  popup__title">Вход в аккаунт</h2>
       <form id="auth-form" action="https://echo.htmlacademy.ru" method="POST" class="popup__form">
 				<div class="form-field">
-					<input type="email" name="email" id="email-auth" class="input  popup__input" placeholder="Электронная почта">
+					<input type="email" name="email" id="email-auth" class="input  popup__input" placeholder="Электронная почта" autocomplete="username">
 					<label class="form-field__error  hidden" for="email-auth">
 						<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#circle-cross"/>
@@ -74,7 +73,7 @@
 					</label>
 				</div>
 				<div class="form-field">
-					<input type="password" name="password" id="password-auth" class="input  popup__input" placeholder="Пароль">
+					<input type="password" name="password" id="password-auth" class="input  popup__input" placeholder="Пароль" autocomplete="current-password">
 					<label class="form-field__error  hidden" for="password-auth">
 						<svg class="icon  icon--16" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#circle-cross"/>
@@ -90,6 +89,7 @@
       </div>
     </div>
   </div>
+
 	<div class="graph-modal__container  dialog__container  dialog__container--error" role="dialog" aria-modal="true" data-graph-target="delete-account">
     <div class="graph-modal__content  dialog__content">
 			<div class="dialog__icon">
@@ -107,6 +107,7 @@
       </div>
     </div>
   </div>
+
 	<div class="graph-modal__container  dialog__container  dialog__container--error" role="dialog" aria-modal="true" data-graph-target="delete-recipe">
     <div class="graph-modal__content  dialog__content">
 			<div class="dialog__icon">
