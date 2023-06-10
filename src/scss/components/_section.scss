@@ -32,6 +32,7 @@
     text-decoration: underline;
   }
 
+  &:disabled,
   &.disabled {
     color: var(--color-text-disabled);
     cursor: not-allowed;

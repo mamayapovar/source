@@ -38,7 +38,6 @@
     color: var(--color-fields-text-disabled);
     background-color: var(--color-fields-bg-disabled);
     cursor: not-allowed;
-    pointer-events: none;
 
     &::placeholder {
       color: var(--color-fields-text-disabled);
@@ -69,7 +68,7 @@
   }
 
   &--textarea {
-    height: 140px;
+    height: 96px;
     resize: none;
   }
 

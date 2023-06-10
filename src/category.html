@@ -73,23 +73,19 @@
 						<div class="info__inner">
 							<img src="img/category/1.svg" class="info-avatar" width="120" height="120" alt="Изображениие категории">
 							<h1 class="section-h1  info__name">Выпечка</h1>
-							<p class="info__desc">Пышные булочки, пироги, оладьи и не только</p>
+							<p class="info__desc">Огромное разнообразие сладостей — начиная от легких и пушистых бисквитов и заканчивая сочными и ароматными пирожными</p>
 						</div>
 					</div>
 					<div class="feed  category__feed">
-						<!-- Если рецептов нет и не авторизован -->
-						<!-- @include('partials/feed-placeholder.html', {
-							'text': 'Здесь ещё нет рецептов',
-						}) -->
-
 						<!-- Если рецептов нет -->
-						<!-- @include('partials/feed-placeholder.html', {
-							'text': 'Опубликуйте первый рецепт, чтобы привлечь читаталей',
+						@include('partials/feed-placeholder.html', {
+							'text': 'Здесь ещё нет рецептов',
+							'hint': 'Опубликуй первый рецепт, чтобы привлечь читаталей',
 							'btn': 'new-recipe'
-						}) -->
+						})
 
 						<!-- Если рецепты есть -->
-						@include('partials/feed-item.html', {
+						<!-- @include('partials/feed-item.html', {
 							'page': 'category'
 						})
 						@include('partials/feed-item.html', {
@@ -97,7 +93,7 @@
 						})
 						@include('partials/feed-item.html', {
 							'page': 'category'
-						})
+						}) -->
 					</div>
         </main>
       </div>

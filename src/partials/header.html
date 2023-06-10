@@ -10,7 +10,7 @@
 					<form id="search-form" action="search.html" method="GET" class="search-query  header__search" role="search">
 						<div class="search-query__field">
 							<input type="text" name="query" id="search-query" class="input  search-query__input  header__input" placeholder="Поиск" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Введите запрос" data-search-query>
-							<button type="button" class="btn-reset  search-query__btn" aria-label="Очистить поле поиска" tabindex="-1" data-search-clear>
+							<button type="button" class="btn-reset  search-query__btn" aria-label="Очистить поле поиска" data-search-clear>
 								<svg class="icon" aria-hidden="true" focusable="false">
 									<use href="img/sprite.svg#cross"/>
 								</svg>
@@ -65,7 +65,7 @@
 			</div>
 			<div class="header__right">
 				@if (context.type != 'second' && context.type != 'guest') {
-					<a href="new-recipe.html" class="btn  btn--left" aria-label="Создать новый рецепт">
+					<a href="new-recipe.html" class="btn  btn--left  btn--small" aria-label="Создать новый рецепт">
 						Создать
 						<svg class="icon" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#plus"/>
@@ -73,7 +73,7 @@
 					</a>
 				}
 				@if (context.type == 'guest') {
-					<button class="btn  btn--left" data-graph-path="register" aria-label="Создать новый рецепт">
+					<button class="btn  btn--left  btn--small" data-graph-path="register" aria-label="Создать новый рецепт">
 						Создать
 						<svg class="icon" aria-hidden="true" focusable="false">
 							<use href="img/sprite.svg#plus"/>
@@ -89,7 +89,7 @@
 				@if (context.type != 'guest') {
 					<div class="header-profile">
 						<a href="user.html" class="header-profile__avatar" aria-label="Перейти в профиль">
-							<img src="img/placeholder-avatar.jpg" width="56" height="56" alt="Фото профиля">
+							<img src="img/placeholder-avatar.jpg" width="48" height="48" alt="Фото профиля">
 						</a>
 						<button class="btn-reset  header-profile__toggle" aria-label="Открыть меню профиля" aria-expanded="false" data-menu-profile-toggle>
 							<svg class="icon" aria-hidden="true" focusable="false">

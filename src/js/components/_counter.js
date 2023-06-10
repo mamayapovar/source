@@ -6,13 +6,11 @@
 		const counterMax = 20
 
 		function enableButton(btn) {
-			btn.classList.remove('disabled')
-			btn.removeAttribute('tabindex')
+			btn.disabled = false
 		}
 
 		function disableButton(btn) {
-			btn.classList.add('disabled')
-			btn.setAttribute('tabindex', '-1')
+			btn.disabled = true
 		}
 
 		function plusValidate() {

@@ -2,7 +2,6 @@
   display: flex;
 
   &__input {
-    border: none;
     border-radius: 0;
     padding: 8px;
     width: 56px;
@@ -10,46 +9,20 @@
   }
 
   &__btn {
-    border: none;
     padding: 16px;
-    background-color: var(--color-button-secondary-bg-default);
-    transition: background-color 0.2s ease;
 
     .icon {
       fill: var(--color-icons-accent);
-      transition: fill, opacity 0.2s ease;
-    }
-
-    &:hover,
-    &.focus-visible {
-      background-color: var(--color-button-secondary-bg-hover);
-    }
-
-    &:active {
-      background-color: var(--color-button-secondary-bg-hover);
-
-      .icon {
-        opacity: 0.6;
-      }
-    }
-
-    &:disabled,
-    &.disabled {
-      border-color: var(--color-button-secondary-bg-disabled);
-      color: var(--color-button-secondary-text-disabled);
-      background-color: var(--color-button-secondary-bg-disabled);
-
-      .icon {
-        fill: var(--color-button-secondary-text-disabled);
-      }
     }
 
     &--minus {
-      border-radius: 4px 0 0 4px;
+      border-right: none;
+      border-radius: 8px 0 0 8px;
     }
 
     &--plus {
-      border-radius: 0 4px 4px 0;
+      border-left: none;
+      border-radius: 0 8px 8px 0;
     }
   }
 }

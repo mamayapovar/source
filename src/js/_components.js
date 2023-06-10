@@ -16,9 +16,10 @@ import './components/_menu-more.js';
 import './components/_modal.js';
 import './components/_scroll-active.js';
 import './components/_smooth-scroll.js';
-import './components/_new-recipe.js';
+import './components/_ingredient-list.js';
+import './components/_step-list.js';
 import './components/_imageuploader.js';
 import './components/_counter.js'
 import './components/_input-validate.js';
-import './components/_textarea-resize.js';
+import './components/_comments-resize.js';
 import './components/_info-avatar.js';

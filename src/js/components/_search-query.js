@@ -38,7 +38,7 @@
 			if (searchQuery.value != '') {
 				searchMenu.setAttribute('data-search-menu', 'queries');
 				searchLabel.classList.add('hidden');
-				searchClear.setAttribute('tabindex', '0');
+				searchClear.disabled = false;
 				searchClear.classList.add('active');
 				updateSearchOption(optionHoveredIndex);
 
@@ -51,7 +51,7 @@
 				searchMenu.setAttribute('data-search-menu', 'recent');
 				searchLabel.classList.remove('hidden');
 				searchClear.classList.remove('active');
-				searchClear.setAttribute('tabindex', '-1');
+				searchClear.disabled = true;
 				updateSearchOption(optionHoveredIndex);
 
 				if (searchAllBtn) {
@@ -162,7 +162,7 @@
 			if (document.querySelector('.search__info .info__name')) {
 				const query = document.querySelector('.search__info .info__name')
 				searchQuery.value = query.textContent
-				searchClear.setAttribute('tabindex', '0');
+				searchClear.disabled = false;
 				searchClear.classList.add('active');
 			}
 		});

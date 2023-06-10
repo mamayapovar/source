@@ -16,7 +16,7 @@
 
 				if (!searchMenu.classList.contains('active')) {
 					searchMenu.classList.add('active');
-					searchClear.setAttribute('tabindex', '0');
+					searchClear.disabled = false;
 					searchClear.classList.add('active');
 					window.addEventListener('click', watchClickOutside);
 					window.addEventListener('keydown', supportKeyboardNavigation);
@@ -38,7 +38,7 @@
 			searchMenuClose();
 			searchQuery.value = '';
 			searchQuery.focus();
-			searchClear.setAttribute('tabindex', '-1');
+			searchClear.disabled = true;
 			searchClear.classList.remove('active');
 			searchLink.forEach(e => e.remove());
 		}
@@ -118,7 +118,7 @@
 			if (document.querySelector('.search__info .info__name')) {
 				const query = document.querySelector('.search__info .info__name');
 				searchQuery.value = query.textContent;
-				searchClear.setAttribute('tabindex', '0');
+				searchClear.disabled = false;
 				searchClear.classList.add('active');
 			}
 		});

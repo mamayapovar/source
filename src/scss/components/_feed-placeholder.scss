@@ -7,7 +7,11 @@
   padding: 96px 32px;
   background-color: var(--color-bg-island);
 
-  &__desc {
+  &__text {
+    margin-bottom: 8px;
+  }
+
+  &__hint {
     font-weight: 400;
     font-size: var(--font-s);
     line-height: var(--lh-primary);
@@ -16,7 +20,7 @@
   }
 
   &__btn {
-    margin-top: 12px;
+    margin-top: 16px;
   }
 
   &--btn {

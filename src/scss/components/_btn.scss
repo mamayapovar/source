@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 16px 32px;
   font-weight: 700;
   font-size: var(--font-s);
@@ -32,7 +32,6 @@
     color: var(--color-button-primary-text-disabled);
     background-color: var(--color-button-primary-bg-disabled);
     cursor: not-allowed;
-    pointer-events: none;
 
     .icon {
       fill: var(--color-button-primary-text-disabled);
@@ -201,6 +200,25 @@
         fill: var(--color-button-default-text-disabled);
       }
     }
+
+    &.btn--icon {
+      &:active {
+        border-color: var(--color-button-default-border);
+
+        .icon {
+          opacity: 0.6;
+        }
+      }
+
+      &:disabled,
+      &.disabled {
+        border-color: var(--color-button-default-border);
+
+        .icon {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &--other {
@@ -235,6 +253,10 @@
     .icon {
       margin-left: 8px;
     }
+
+    &.btn--small {
+      padding-right: 18px;
+    }
   }
 
   &--left {
@@ -244,9 +266,15 @@
       order: -1;
       margin-right: 8px;
     }
+
+    &.btn--small {
+      padding-left: 18px;
+    }
   }
 
   &--subscribe {
+    padding: 12px 24px !important;
+
     &.active {
       border-color: var(--color-button-primary-bg-click);
       color: var(--color-button-primary-text);

@@ -38,16 +38,7 @@
       }
     }
 
-    &.active {
-      span {
-        color: var(--color-text-accent);
-      }
-
-      .icon {
-        fill: var(--color-icons-accent);
-      }
-    }
-
+    &:disabled,
     &.disabled {
       pointer-events: none;
 
@@ -57,6 +48,16 @@
 
       .icon {
         fill: var(--color-text-disabled);
+      }
+    }
+
+    &.active {
+      span {
+        color: var(--color-text-accent);
+      }
+
+      .icon {
+        fill: var(--color-icons-accent);
       }
     }
   }

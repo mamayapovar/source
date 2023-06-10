@@ -47,6 +47,7 @@
       }
     }
 
+    &:disabled,
     &.disabled {
       opacity: 0;
       visibility: hidden;

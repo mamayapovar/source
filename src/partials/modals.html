@@ -47,10 +47,9 @@
 
 		<!-- Успешная регистрация -->
 		<!-- <div class="graph-modal__content  popup__content  popup__content--success">
-			<img class="popup__icon" src="img/success-register.svg" alt="" width="80" height="80">
-			<h2 class="section-h2  popup__title">Добро пожаловать!</h2>
-			<p class="popup__desc">Регистрация прошла успешно</p>
-			<p class="popup__desc">Скоро вас перенаправит на главную</p>
+			<img class="popup__icon" src="img/success-register.svg" alt="" width="96" height="96">
+			<h2 class="section-h2  popup__title">Регистрация завершен</h2>
+			<p class="popup__desc">Ура! Теперь можно обмениваться рецептами с другими участниками платформы</p>
     </div> -->
   </div>
 
@@ -92,14 +91,16 @@
 
 	<div class="graph-modal__container  dialog__container  dialog__container--error" role="dialog" aria-modal="true" data-graph-target="delete-account">
     <div class="graph-modal__content  dialog__content">
-			<div class="dialog__icon">
-				<svg class="icon" aria-hidden="true" focusable="false">
-					<use href="img/sprite.svg#delete"/>
-				</svg>
-			</div>
-			<div class="dialog__info">
-				<h2 class="section-h3  dialog__title">Удаление аккаунта</h2>
-				<p class="dialog__desc">Вы уверены, что хотите удалить свой аккаунт? Ваши рецепты и комментарии будут удалены навсегда.</p>
+			<div class="dialog__top">
+				<div class="dialog__icon">
+					<svg class="icon" aria-hidden="true" focusable="false">
+						<use href="img/sprite.svg#delete"/>
+					</svg>
+				</div>
+				<div class="dialog__info">
+					<h2 class="section-h3  dialog__title">Удалить аккаунт?</h2>
+					<p class="dialog__desc">Рецепты, комментарии и другая связанная информация с аккаунтом будет удалена навсегда</p>
+				</div>
 			</div>
       <div class="dialog__bottom">
 				<button class="btn  btn--default  btn--small  dialog__btn  js-modal-close">Отменить</button>
@@ -110,14 +111,36 @@
 
 	<div class="graph-modal__container  dialog__container  dialog__container--error" role="dialog" aria-modal="true" data-graph-target="delete-recipe">
     <div class="graph-modal__content  dialog__content">
-			<div class="dialog__icon">
-				<svg class="icon" aria-hidden="true" focusable="false">
-					<use href="img/sprite.svg#delete"/>
-				</svg>
+			<div class="dialog__top">
+				<div class="dialog__icon">
+					<svg class="icon" aria-hidden="true" focusable="false">
+						<use href="img/sprite.svg#delete"/>
+					</svg>
+				</div>
+				<div class="dialog__info">
+					<h2 class="section-h3  dialog__title">Удалить рецепт?</h2>
+					<p class="dialog__desc">После удаления восстановить рецепт будет невозможно</p>
+				</div>
 			</div>
-			<div class="dialog__info">
-				<h2 class="section-h3  dialog__title">Удаление рецепта</h2>
-				<p class="dialog__desc">Вы уверены, что хотите навсегда удалить этот рецепт?</p>
+      <div class="dialog__bottom">
+				<button class="btn  btn--default  btn--small  dialog__btn  js-modal-close">Отменить</button>
+				<a href="index.html" class="btn  btn--important  btn--small  dialog__btn">Удалить</a>
+      </div>
+    </div>
+  </div>
+
+	<div class="graph-modal__container  dialog__container  dialog__container--error" role="dialog" aria-modal="true" data-graph-target="delete-comment">
+    <div class="graph-modal__content  dialog__content">
+			<div class="dialog__top">
+				<div class="dialog__icon">
+					<svg class="icon" aria-hidden="true" focusable="false">
+						<use href="img/sprite.svg#delete"/>
+					</svg>
+				</div>
+				<div class="dialog__info">
+					<h2 class="section-h3  dialog__title">Удалить комментарий?</h2>
+					<p class="dialog__desc">После удаления восстановить комментарий будет невозможно</p>
+				</div>
 			</div>
       <div class="dialog__bottom">
 				<button class="btn  btn--default  btn--small  dialog__btn  js-modal-close">Отменить</button>

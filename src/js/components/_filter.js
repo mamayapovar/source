@@ -139,10 +139,10 @@
 
 				if (btn.classList.contains('selected')) {
 					toggle.classList.add('selected')
-					filterClear.removeAttribute('disabled')
+					filterClear.disabled = false
 				} else {
 					toggle.classList.remove('selected')
-					filterClear.setAttribute('disabled', '')
+					filterClear.disabled = true
 				}
 				closeMenu()
 			})
@@ -160,7 +160,7 @@
 				el.classList.remove('selected')
 			})
 
-			filterClear.setAttribute('disabled', '')
+			filterClear.disabled = true
 		})
 	}
 
