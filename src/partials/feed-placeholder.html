@@ -1,14 +1,14 @@
 @if (context.btn) {
-	<div class="feed-placeholder  feed-placeholder--btn">
+	<div class="feed-placeholder">
 		<h3 class="section-h3  feed-placeholder__text">@text</h3>
 
 		@if (context.hint) {
-			<p class="feed-placeholder__desc">@hint</p>
+			<p class="feed-placeholder__hint">@hint</p>
 		}
 
 		@if (context.btn == 'new-recipe') {
 			@if (context.type == 'guest') {
-				<button class="btn  btn--small  feed-placeholder__btn" data-graph-path="register" aria-label="Создать новый рецепт">Опубликовать</button>
+				<button class="btn  btn--small  feed-placeholder__btn" data-graph-path="register">Опубликовать</button>
 			}
 			@if (context.type != 'guest') {
 				<a href="new-recipe.html" class="btn  btn--small  feed-placeholder__btn">Опубликовать</a>

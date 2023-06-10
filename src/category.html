@@ -78,22 +78,22 @@
 					</div>
 					<div class="feed  category__feed">
 						<!-- Если рецептов нет -->
-						@include('partials/feed-placeholder.html', {
+						<!-- @include('partials/feed-placeholder.html', {
 							'text': 'Здесь ещё нет рецептов',
 							'hint': 'Опубликуй первый рецепт, чтобы привлечь читаталей',
 							'btn': 'new-recipe'
-						})
+						}) -->
 
 						<!-- Если рецепты есть -->
-						<!-- @include('partials/feed-item.html', {
-							'page': 'category'
-						})
 						@include('partials/feed-item.html', {
 							'page': 'category'
 						})
 						@include('partials/feed-item.html', {
 							'page': 'category'
-						}) -->
+						})
+						@include('partials/feed-item.html', {
+							'page': 'category'
+						})
 					</div>
         </main>
       </div>

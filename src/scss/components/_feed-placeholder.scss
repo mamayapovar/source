@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 16px;
-  padding: 96px 32px;
+  padding: 80px 32px;
   background-color: var(--color-bg-island);
 
   &__text {
@@ -21,9 +21,5 @@
 
   &__btn {
     margin-top: 16px;
-  }
-
-  &--btn {
-    padding: 80px 32px;
   }
 }

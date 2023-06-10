@@ -226,6 +226,7 @@
     width: 40px;
     height: 40px;
     background-color: var(--color-button-other-bg);
+    backdrop-filter: blur(2px);
 
     .icon {
       fill: var(--color-icons-primary-inverse);

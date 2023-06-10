@@ -15,7 +15,7 @@
     overflow-y: hidden;
     padding-bottom: 80px;
     width: 100%;
-    height: auto;
+    height: 144px;
   }
 
   &__btn {
@@ -28,6 +28,10 @@
     display: grid;
     margin-top: 40px;
     gap: 32px;
+
+    &:empty {
+      display: none;
+    }
   }
 }
 
