@@ -62,12 +62,12 @@ import { randomID } from '../functions/random-id'
 				<div class="step-item__body">
 					<div class="imageuploader  imageuploader--small  step-item__imageuploader">
 						<div class="input  input--photo  imageuploader__wrapper">
-							<input type="file" class="imageuploader__input" name="step-photo-${fieldIndex}" id="step-photo-${fieldIndex}" accept=".jpg, .jpeg, .png" aria-label="Загрузите фото шага">
+							<input type="file" class="imageuploader__input" name="step-photo-${fieldIndex}" id="step-photo-${fieldIndex}" accept=".jpg, .jpeg, .png" aria-label="Загрузи фото шага">
 							<div class="imageuploader__placeholder">
 								<svg class="icon" aria-hidden="true" focusable="false">
 									<use href="${svgImage}"/>
 								</svg>
-								Загрузите фото шага
+								Загрузи фото шага
 							</div>
 						</div>
 						<button type="button" class="btn  btn--other  imageuploader__btn  hidden" aria-label="Удалить фото шага">
